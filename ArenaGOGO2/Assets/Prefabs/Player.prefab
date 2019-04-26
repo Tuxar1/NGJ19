@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6800690096049356357}
   - component: {fileID: 6800690096049356354}
   - component: {fileID: 7241914358382957634}
-  - component: {fileID: 3908525207094672693}
+  - component: {fileID: 8442319730310505615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -177,8 +177,8 @@ MonoBehaviour:
   ArmSwingObject: {fileID: 6213883561204091539}
   SwingCooldown: 0.2
   SwingTime: 0.2
-  playerMovement: {fileID: 3908525207094672693}
---- !u!114 &3908525207094672693
+  playerMovement: {fileID: 0}
+--- !u!114 &8442319730310505615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
