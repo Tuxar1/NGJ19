@@ -10,11 +10,13 @@ public class PlayerAttack : MonoBehaviour
     public float SwingTime = 0.2f;
     public PlayerMove playerMovement;
 	public PlayerInput input;
+    public PlayerDeath playerDeath;
 
     // Start is called before the first frame update
     void Start()
     {
 		input.AttackClicked += HandleAttackPressed;
+        playerDeath.PlayerDeathActions += ForceResetAttack;
     }
 
     // Update is called once per frame
@@ -38,6 +40,12 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(SwingTime);
         ArmSwingObject.EndSwing();
         yield return new WaitForSeconds(SwingCooldown);
+        isSwinging = false;
+    }
+
+    private void ForceResetAttack()
+    {
+        ArmSwingObject.EndSwing();
         isSwinging = false;
     }
 }

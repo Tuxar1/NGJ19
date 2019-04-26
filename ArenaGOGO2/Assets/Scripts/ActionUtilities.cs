@@ -13,12 +13,12 @@ namespace Assets.Scripts
     }
     class ActionUtilities
     {
-        private static void KillPlayer(GameObject player)
+        private static void KillPlayer(PlayerDeath player)
         {
-            player.SetActive(false);
+            player.PlayerDie();
         }
 
-        public static Action<GameObject> GetSpikeAction()
+        public static Action<PlayerDeath> GetSpikeAction()
         {
             switch(GameController.instance.spikeAction)
             {

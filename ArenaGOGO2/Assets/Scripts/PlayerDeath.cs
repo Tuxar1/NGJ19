@@ -1,10 +1,11 @@
-﻿using Assets.Scripts;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeHit : MonoBehaviour
+public class PlayerDeath : MonoBehaviour
 {
+    public Action PlayerDeathActions;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,9 @@ public class SpikeHit : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public void PlayerDie()
     {
-        if (col.gameObject.tag == "Player")
-        {
-            ActionUtilities.GetSpikeAction()(col.gameObject.GetComponent<PlayerDeath>());
-        }
+        PlayerDeathActions();
+        gameObject.SetActive(false);
     }
-
 }
