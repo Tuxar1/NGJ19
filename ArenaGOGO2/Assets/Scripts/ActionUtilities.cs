@@ -15,7 +15,7 @@ namespace Assets.Scripts
     {
         private static void KillPlayer(GameObject player)
         {
-            GameObject.Destroy(player);
+            player.SetActive(false);
         }
 
         public static Action<GameObject> GetSpikeAction()
