@@ -17,8 +17,10 @@ public class PlayerMove : MonoBehaviour
 
 	private float xInput = 0.0f;
 
-	// Start is called before the first frame update
-	void Start()
+    public SpriteRenderer spriteRenderer;
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		input.JumpChanged += jumpClicked;
 		input.XAxis += xChanged;
@@ -54,8 +56,11 @@ public class PlayerMove : MonoBehaviour
 		if (xInput * Rigidbody.velocity.x < MaxXVelocity)
 		{
 			if (xInput != 0)
+            { 
 				FacingDirection.x = xInput > 0 ? 1 : -1;
-			Rigidbody.AddForce(Vector2.right * xInput * HorizontalForce);
+                spriteRenderer.flipX = FacingDirection.x == 1;
+            }
+            Rigidbody.AddForce(Vector2.right * xInput * HorizontalForce);
 		}
 		if (Mathf.Abs(Rigidbody.velocity.x) > MaxXVelocity)
 		{

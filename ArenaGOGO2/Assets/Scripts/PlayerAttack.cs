@@ -11,6 +11,9 @@ public class PlayerAttack : MonoBehaviour
     public PlayerMove playerMovement;
 	public PlayerInput input;
     public PlayerDeath playerDeath;
+    public Sprite Attack;
+    public Sprite Standard;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!isSwinging)
         {
+            print(Attack);
+            spriteRenderer.sprite = Attack;
             ArmSwingObject.DoSwing(playerMovement.FacingDirection);
             isSwinging = true;
             StartCoroutine(HandleGetArmBack());
@@ -38,14 +43,20 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator HandleGetArmBack()
     {
         yield return new WaitForSeconds(SwingTime);
-        ArmSwingObject.EndSwing();
+        EndSwing();
         yield return new WaitForSeconds(SwingCooldown);
         isSwinging = false;
     }
 
     private void ForceResetAttack()
     {
-        ArmSwingObject.EndSwing();
+        EndSwing();
         isSwinging = false;
+    }
+
+    private void EndSwing()
+    {
+        ArmSwingObject.EndSwing();
+        spriteRenderer.sprite = Standard;
     }
 }
