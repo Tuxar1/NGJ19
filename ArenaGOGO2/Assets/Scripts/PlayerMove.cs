@@ -7,28 +7,39 @@ public class PlayerMove : MonoBehaviour
 	public float HorizontalForce = 36f;
 	public float MaxXVelocity = 5f;
 	public float JumpVelocity = 1000f;
-    public Vector3 FacingDirection = new Vector3(1, 0, 0);
+	public Vector3 FacingDirection = new Vector3(1, 0, 0);
 
 	public Rigidbody2D Rigidbody;
-	public Transform GroundCheck;
+	public PlayerInput input;
 
 	private bool grounded = false;
 	private bool jump = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private float xInput = 0.0f;
+
+	// Start is called before the first frame update
+	void Start()
+	{
+		input.JumpChanged += jumpClicked;
+		input.XAxis += xChanged;
+	}
+
+	private void jumpClicked(bool val)
+	{
+		if (grounded && val)
+		{
+			jump = true;
+		}
+	}
+
+	private void xChanged(float x)
+	{
+		xInput = x;
+	}
 
 	void Update()
 	{
 		grounded = Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), 1 << LayerMask.NameToLayer("Ground"));
-		
-		if (grounded && Input.GetKeyDown(KeyCode.Space))
-		{
-			jump = true;
-		}
 	}
 
 	public void Hit(Transform arm, float strength)
@@ -39,14 +50,12 @@ public class PlayerMove : MonoBehaviour
 	}
 
 	void FixedUpdate()
-    {
-		var horizontalMovement = Input.GetAxis("Horizontal");
-
-		if (horizontalMovement * Rigidbody.velocity.x < MaxXVelocity)
+	{
+		if (xInput * Rigidbody.velocity.x < MaxXVelocity)
 		{
-            if (horizontalMovement != 0)
-                FacingDirection.x = horizontalMovement > 0 ? 1 : -1;
-			Rigidbody.AddForce(Vector2.right * horizontalMovement * HorizontalForce);
+			if (xInput != 0)
+				FacingDirection.x = xInput > 0 ? 1 : -1;
+			Rigidbody.AddForce(Vector2.right * xInput * HorizontalForce);
 		}
 		if (Mathf.Abs(Rigidbody.velocity.x) > MaxXVelocity)
 		{
@@ -60,5 +69,5 @@ public class PlayerMove : MonoBehaviour
 			jump = false;
 			Rigidbody.AddForce(new Vector2(0, JumpVelocity));
 		}
-    }
+	}
 }
