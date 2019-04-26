@@ -7,6 +7,7 @@ public class playerMove : MonoBehaviour
 	public float HorizontalForce = 36f;
 	public float MaxXVelocity = 5f;
 	public float JumpVelocity = 1000f;
+    public Vector3 FacingDirection = new Vector3(1, 0, 0);
 
 	public Rigidbody2D rigidbody;
 
@@ -23,6 +24,9 @@ public class playerMove : MonoBehaviour
 
 		if (horizontalMovement * rigidbody.velocity.x < MaxXVelocity)
 		{
+            if (horizontalMovement != 0)
+                FacingDirection.x = horizontalMovement > 0 ? 1 : -1;
+            print(FacingDirection);
 			rigidbody.AddForce(Vector2.right * horizontalMovement * HorizontalForce);
 		}
 		if (Mathf.Abs(rigidbody.velocity.x) > MaxXVelocity)
