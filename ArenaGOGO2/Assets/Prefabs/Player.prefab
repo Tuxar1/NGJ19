@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ee05166d8a8fd46b6998211233b366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalForce: 36
+  HorizontalForce: 100
   MaxXVelocity: 5
   JumpVelocity: 1000
   FacingDirection: {x: 1, y: 0, z: 0}
