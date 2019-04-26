@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArmToHitWith : MonoBehaviour
 {
     public Rigidbody2D ArmRigidBody;
-    public Vector2 SwingForce = new Vector2(100, 0);
+    public Vector2 SwingForce = new Vector2(750, 0);
     public float HitDisplacement = 0.2f;
     public Transform Parent;
 
@@ -23,9 +23,9 @@ public class ArmToHitWith : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.ToLower() == "player")
+        if (col.gameObject.tag == "Player")
         {
-            // Add force to the player and damage
+			col.gameObject.GetComponent<PlayerMove>().Hit(transform, SwingForce.x);
         }
     }
 

@@ -120,6 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmRigidBody: {fileID: 0}
-  SwingForce: {x: 100, y: 0}
+  SwingForce: {x: 750, y: 0}
   HitDisplacement: 0.67
   Parent: {fileID: 0}

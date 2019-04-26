@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 6800690096049356356}
   - component: {fileID: 6800690096049356357}
   - component: {fileID: 6800690096049356354}
-  - component: {fileID: 6800690096049356358}
   - component: {fileID: 7241914358382957634}
+  - component: {fileID: 8442319730310505615}
+  - component: {fileID: 2758112665538628161}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,23 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6800690096049356358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6800690096049356355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ee05166d8a8fd46b6998211233b366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HorizontalForce: 36
-  MaxXVelocity: 5
-  JumpVelocity: 500
-  FacingDirection: {x: 1, y: 0, z: 0}
-  rigidbody: {fileID: 6800690096049356354}
 --- !u!114 &7241914358382957634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +147,39 @@ MonoBehaviour:
   ArmSwingObject: {fileID: 6213883561204091539}
   SwingCooldown: 0.2
   SwingTime: 0.2
-  playerMovement: {fileID: 6800690096049356358}
+  playerMovement: {fileID: 8442319730310505615}
+  input: {fileID: 2758112665538628161}
+--- !u!114 &8442319730310505615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800690096049356355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ee05166d8a8fd46b6998211233b366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HorizontalForce: 36
+  MaxXVelocity: 5
+  JumpVelocity: 1000
+  FacingDirection: {x: 1, y: 0, z: 0}
+  Rigidbody: {fileID: 6800690096049356354}
+  input: {fileID: 2758112665538628161}
+--- !u!114 &2758112665538628161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800690096049356355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316e1d3ee41485d499d09e4373da6823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerID: 0
 --- !u!1001 &399006549282746706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,8 +254,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6031912520358886337, guid: cf98fce774b692a42b87038fd75b6918,
         type: 3}
-      propertyPath: HitDisplacement
-      value: 0.67
+      propertyPath: SwingForce.x
+      value: 750
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf98fce774b692a42b87038fd75b6918, type: 3}
