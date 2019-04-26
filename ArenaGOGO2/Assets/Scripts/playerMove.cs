@@ -30,9 +30,6 @@ public class playerMove : MonoBehaviour
 			rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * MaxXVelocity, rigidbody.velocity.y);
 		}
 
-		Debug.Log(horizontalMovement);
-		Debug.Log(rigidbody.velocity);
-
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			rigidbody.AddForce(new Vector2(0, JumpVelocity));
