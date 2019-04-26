@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6800690096049356359}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6800690096049356355
 GameObject:
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7241914358382957634}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalForce: 36
   MaxXVelocity: 5
+  JumpVelocity: 1000
   FacingDirection: {x: 1, y: 0, z: 0}
+  Rigidbody: {fileID: 6800690096049356354}
+  GroundCheck: {fileID: 207883089}
 --- !u!114 &7241914358382957634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,8 +270,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6031912520358886337, guid: cf98fce774b692a42b87038fd75b6918,
         type: 3}
-      propertyPath: HitDisplacement
-      value: 0.67
+      propertyPath: SwingForce.x
+      value: 750
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf98fce774b692a42b87038fd75b6918, type: 3}
@@ -290,6 +293,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5bf7b66a9ad694ba290747ceacbcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroundCheck: {fileID: 207883089}
-  Rigidbody: {fileID: 6800690096049356354}
-  JumpVelocity: 1000

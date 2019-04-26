@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private bool isSwinging = false;
     public float SwingCooldown = 0.2f;
     public float SwingTime = 0.2f;
-    public playerMove playerMovement;
+    public PlayerMove playerMovement;
 
     // Start is called before the first frame update
     void Start()
