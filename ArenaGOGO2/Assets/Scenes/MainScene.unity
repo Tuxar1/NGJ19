@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -191,16 +191,26 @@ PrefabInstance:
         type: 3}
       propertyPath: GroundCheck
       value: 
-      objectReference: {fileID: 1668911882}
+      objectReference: {fileID: 0}
     - target: {fileID: 6800690096049356358, guid: 02f246f60520dbe40a73ebf0c3f3f160,
         type: 3}
       propertyPath: Rigidbody
       value: 
       objectReference: {fileID: 956101187}
+    - target: {fileID: 6800690096049356358, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6213883561204091539, guid: 02f246f60520dbe40a73ebf0c3f3f160,
         type: 3}
       propertyPath: SwingForce.x
       value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758112665538628161, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+        type: 3}
+      propertyPath: PlayerID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02f246f60520dbe40a73ebf0c3f3f160, type: 3}
@@ -451,6 +461,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6800690096049356358, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800690096049356358, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+        type: 3}
+      propertyPath: Rigidbody
+      value: 
+      objectReference: {fileID: 1966614702}
+    - target: {fileID: 6800690096049356358, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+        type: 3}
+      propertyPath: GroundCheck
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6213883561204091539, guid: 02f246f60520dbe40a73ebf0c3f3f160,
         type: 3}
       propertyPath: SwingForce.x
@@ -537,11 +562,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1668911882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 207883089, guid: 02f246f60520dbe40a73ebf0c3f3f160,
+--- !u!50 &1966614702 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6800690096049356354, guid: 02f246f60520dbe40a73ebf0c3f3f160,
     type: 3}
-  m_PrefabInstance: {fileID: 648158005}
+  m_PrefabInstance: {fileID: 1018210226}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5031907681345111075
 PrefabInstance:
