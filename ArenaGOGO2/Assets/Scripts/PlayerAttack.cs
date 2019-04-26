@@ -9,22 +9,23 @@ public class PlayerAttack : MonoBehaviour
     public float SwingCooldown = 0.2f;
     public float SwingTime = 0.2f;
     public PlayerMove playerMovement;
+	public PlayerInput input;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+		input.AttackClicked += HandleAttackPressed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleAttackPressed();
+        // HandleAttackPressed();
     }
 
-    private void HandleAttackPressed()
+    private void HandleAttackPressed(bool val)
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSwinging)
+        if (!isSwinging)
         {
             ArmSwingObject.DoSwing(playerMovement.FacingDirection);
             isSwinging = true;
