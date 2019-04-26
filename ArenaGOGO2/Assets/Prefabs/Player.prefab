@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 6800690096049356356}
   - component: {fileID: 6800690096049356357}
   - component: {fileID: 6800690096049356354}
-  - component: {fileID: 6800690096049356358}
   - component: {fileID: 7241914358382957634}
+  - component: {fileID: 3908525207094672693}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -162,7 +162,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6800690096049356358
+--- !u!114 &7241914358382957634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800690096049356355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9890e882911a494585e302344a2ae9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmSwingObject: {fileID: 6213883561204091539}
+  SwingCooldown: 0.2
+  SwingTime: 0.2
+  playerMovement: {fileID: 3908525207094672693}
+--- !u!114 &3908525207094672693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,22 +196,6 @@ MonoBehaviour:
   FacingDirection: {x: 1, y: 0, z: 0}
   Rigidbody: {fileID: 6800690096049356354}
   GroundCheck: {fileID: 207883089}
---- !u!114 &7241914358382957634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6800690096049356355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9890e882911a494585e302344a2ae9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ArmSwingObject: {fileID: 6213883561204091539}
-  SwingCooldown: 0.2
-  SwingTime: 0.2
-  playerMovement: {fileID: 6800690096049356358}
 --- !u!1001 &399006549282746706
 PrefabInstance:
   m_ObjectHideFlags: 0
