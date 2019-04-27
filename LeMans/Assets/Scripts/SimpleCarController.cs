@@ -101,6 +101,9 @@ public class SimpleCarController : MonoBehaviour
         {
             rigidbody.AddForce(rigidbody.transform.forward * 200f * speed, ForceMode.Impulse);
         }
+
+        //var target = Quaternion.LookRotation((transform.position + rigidbody.velocity) - this.transform.position);
+        //this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, target, 12f);
     }
 
     public void FixedUpdate()

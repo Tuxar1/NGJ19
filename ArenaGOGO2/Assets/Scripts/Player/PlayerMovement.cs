@@ -6,9 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float GroundSpeed = 10f;
 	public float AirSpeed = 8f;
-	public float GroundJumpSpeed = 15f;
-	public float WallJumpSpeed = 15f;
+	public float GroundJumpSpeed = 10f;
+	public float WallJumpSpeed = 12f;
 	public Vector3 FacingDirection = new Vector3(-1, 0, 0);
+
+	private float ChangingDirectionBonusFactor = 3;
+	private float GroundDeaccelarationBonusFactor = 5;
+	private float FlyingXDampFactor = 0.95f;
+
+	private float JumpEarlyBias = 0.1f;
+	private float JumpLateBias = 0.1f;
+	private float HigherJumpTime = 0.2f;
 
 	public Rigidbody2D Rigidbody;
 	public PlayerInput input;
@@ -18,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
 	private bool jump = false;
 	private bool leftWall = false;
 	private bool rightWall = false;
-	private bool wallJump = false;
+	private float lastGroundTime = float.NegativeInfinity;
+	private float lastWallTime = float.NegativeInfinity;
+	private float lastJumpInputStart = float.NegativeInfinity;
+	private float lastJumpStart = float.NegativeInfinity;
 
 	private float xInput = 0.0f;
 
@@ -33,30 +44,20 @@ public class PlayerMovement : MonoBehaviour
 
 	private void jumpClicked(bool val)
 	{
-		if (grounded && val)
+		if (val && !jump)
 		{
-			jump = true;
+			lastJumpInputStart = Time.timeSinceLevelLoad;
 		}
-		else if ((leftWall || rightWall) && val)
+		if (!val)
 		{
-			wallJump = true;
+			lastJumpStart = float.NegativeInfinity;
 		}
+		jump = val;
 	}
 
 	private void xChanged(float x)
 	{
 		xInput = x;
-	}
-
-	// Update is called once per frame
-	void Update()
-    {
-		//grounded = Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), 1 << LayerMask.NameToLayer("Ground"));
-		//leftWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x - 0.5f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
-		//rightWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x + 0.5f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), Color.red);
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x - 0.5f, transform.position.y), Color.blue);
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x + 0.5f, transform.position.y), Color.green);
 	}
 
 	public void Hit(Transform arm, float strength)
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void UpdateCollisions()
 	{
+		var time = Time.timeSinceLevelLoad;
 		grounded = false;
 		leftWall = false;
 		rightWall = false;
@@ -90,44 +92,71 @@ public class PlayerMovement : MonoBehaviour
 			if (angle < 60)
 			{
 				grounded = true;
+				lastGroundTime = time;
 			}
 			else if (angle < 100)
 			{
 				if (contactPoint.normal.x > 0)
 				{
 					leftWall = true;
+					lastWallTime = time;
 				}
 				else if (contactPoint.normal.x < 0)
 				{
 					rightWall = true;
+					lastWallTime = time;
 				}
 			}
-			
 		}
 	}
 
 	void UpdateJump()
 	{
-		// TODO needs late bias
-		if (!jump && !wallJump)
+		var time = Time.timeSinceLevelLoad;
+
+		var doJump = lastJumpInputStart + JumpEarlyBias > time;
+		var continueJump = lastJumpStart + HigherJumpTime > time;
+		if (!doJump && !continueJump)
 		{
 			return;
 		}
-		jump = false;
-		wallJump = false;
+		var groundedJump = grounded || lastGroundTime + JumpLateBias > time;
+		var wallJump = (leftWall || rightWall) || lastWallTime + JumpLateBias > time;
+		if (!wallJump && !groundedJump && !continueJump)
+		{
+			return;
+		}
 		var momentum = Rigidbody.velocity;
 		Vector2 newVelocity = momentum;
-		if (grounded)
+		if (groundedJump || continueJump)
 		{
 			newVelocity = new Vector2(momentum.x, GroundJumpSpeed);
+			ResetJumpVars();
+			if (doJump)
+			{
+				lastJumpStart = time;
+			}
 		}
-		else if (leftWall || rightWall)
+		else if (wallJump)
 		{
 			var xVel = leftWall ? 1 : -1;
 			var wallJumpVector = new Vector2(xVel, 2).normalized;
 			newVelocity = wallJumpVector * WallJumpSpeed;
+			ResetJumpVars();
+			if (doJump)
+			{
+				lastJumpStart = time;
+			}
 		}
 		Rigidbody.velocity = newVelocity;
+	}
+
+	void ResetJumpVars()
+	{
+		grounded = false;
+		lastGroundTime = float.NegativeInfinity;
+		lastJumpInputStart = float.NegativeInfinity;
+		lastWallTime = float.NegativeInfinity;
 	}
 
 	void UpdateMove()
@@ -139,20 +168,24 @@ public class PlayerMovement : MonoBehaviour
 		if (grounded)
 		{
 			move = xInput * GroundSpeed;
-			if (changingDirection || xInput == 0)
+			if (changingDirection)
 			{
-				acceleration *= 2;
+				acceleration *= ChangingDirectionBonusFactor;
+			}
+			else if (xInput == 0)
+			{
+				acceleration *= GroundDeaccelarationBonusFactor;
 			}
 		}
 		else
 		{
 			if (changingDirection)
 			{
-				acceleration *= 2;
+				acceleration *= ChangingDirectionBonusFactor;
 			}
 			if (xInput == 0)
 			{
-				move = momentum.x;
+				move = momentum.x * FlyingXDampFactor;
 			}
 			else
 			{

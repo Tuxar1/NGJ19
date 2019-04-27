@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RollingCar : MonoBehaviour
 {
-    private float speed = 5f;
+    public float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,19 +19,19 @@ public class RollingCar : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            rigidbody.AddTorque(Camera.main.transform.right * speed * 5f);
+            rigidbody.AddTorque(Camera.main.transform.right * speed);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            rigidbody.AddTorque(-Camera.main.transform.right * speed);
+            rigidbody.velocity = Vector3.MoveTowards(rigidbody.velocity, Vector3.zero, 0.15f);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rigidbody.AddTorque(-Camera.main.transform.forward * speed);
+            rigidbody.AddTorque(-Camera.main.transform.up * speed);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rigidbody.AddTorque(Camera.main.transform.forward * speed);
+            rigidbody.AddTorque(Camera.main.transform.up * speed);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
