@@ -18,6 +18,6 @@ public class GoalScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Goals");
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

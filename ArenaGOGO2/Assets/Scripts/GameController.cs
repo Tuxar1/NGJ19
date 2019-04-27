@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
         RestartAction();
         foreach (var player in playerSpawnPos.Keys)
         {
-			ResetPlayer(player, 0);
+			StartCoroutine(ResetPlayer(player, 0f));
         }
         AfterRestartAction();
 		PlayerSetup.AllowInput = true;
