@@ -52,7 +52,7 @@ public class Lever : MonoBehaviour
 
     private void ResetLeverState()
     {
-        leverState = 3;
+        leverState = -1;
         ChangeLeverState();
     }
 

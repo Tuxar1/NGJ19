@@ -46,6 +46,9 @@ public class PlatformScript : MonoBehaviour
 	public void Reset()
 	{
 		hasBeenTouched = false;
-		spriteRenderer.color = Color.white;
+		if (spriteRenderer != null)
+		{
+			spriteRenderer.color = Color.white;
+		}
 	}
 }

@@ -62,10 +62,11 @@ public class WinController : MonoBehaviour
     private GameModes[] gameModes = {
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
         new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
         new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard, ""),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.HeavyWinds, "???"),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity, "The moon"),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
 		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity, "???"),
 	};
     private int gamesModesIterator = 0;
@@ -87,7 +88,7 @@ public class WinController : MonoBehaviour
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
         GameController.instance.RestartAction += PickNextGameMode;
         GameController.instance.RestartAction += SetEnvironmentMods;
-		GameController.instance.RestartAction += InitializeWinCondition;
+		GameController.instance.AfterRestartAction += InitializeWinCondition;
 		PickNextGameMode();
         SetEnvironmentMods();
         InitializeWinCondition();
