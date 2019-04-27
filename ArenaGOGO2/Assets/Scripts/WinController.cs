@@ -27,8 +27,19 @@ public enum EnvironmentMods
 
 public class WinController : MonoBehaviour
 {
-    public EnvironmentMods environmentMods;
-    public WinConditions winCondition;
+    private class GameModes
+    {
+        public WinConditions winCondition;
+        public EnvironmentMods environmentMods;
+        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods)
+        {
+            this.winCondition = winCondition;
+            this.environmentMods = environmentMods;
+        }
+    }
+
+    private EnvironmentMods environmentMod;
+    public WinConditions winCondition { get; private set; }
     public static WinController instance = null;
     public GameObject[] playerRefs;
     public PlatformScript[] platforms;
@@ -37,6 +48,14 @@ public class WinController : MonoBehaviour
     public GameObject hardModeHolder;
 
     public Action<Color> WinActions;
+
+    private GameModes[] gameModes = {
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
+        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.SpikesUnderYou),
+    };
+    private int gamesModesIterator = 0;
 
     void Awake()
     {
@@ -53,7 +72,9 @@ public class WinController : MonoBehaviour
     {
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
-        GameController.instance.RestartAction = SetEnvironmentMods;
+        GameController.instance.RestartAction += PickNextGameMode;
+        GameController.instance.RestartAction += SetEnvironmentMods;
+        PickNextGameMode();
         SetEnvironmentMods();
     }
 
@@ -65,7 +86,7 @@ public class WinController : MonoBehaviour
 
     public void SetEnvironmentMods()
     {
-        switch(environmentMods)
+        switch(environmentMod)
         {
             case EnvironmentMods.HardMode:
                 hardModeHolder.SetActive(true);
@@ -73,6 +94,17 @@ public class WinController : MonoBehaviour
             default:
                 hardModeHolder.SetActive(false);
                 break;
+        }
+    }
+
+    public void PickNextGameMode()
+    {
+        winCondition = gameModes[gamesModesIterator].winCondition;
+        environmentMod = gameModes[gamesModesIterator].environmentMods;
+        gamesModesIterator++;
+        if (gamesModesIterator > gameModes.Length - 1)
+        {
+            gamesModesIterator = 0;
         }
     }
 
