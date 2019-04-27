@@ -116,4 +116,9 @@ public class PlayerSetup
 	{
 		return playerID2InputData.Select(pd => new Tuple<int, Color>(pd.Key, pd.Value.PlayerColor)).ToArray();
 	}
+
+	public static int[] GetPlayerIDs()
+	{
+		return playerID2InputData.Keys.ToArray();
+	}
 }
