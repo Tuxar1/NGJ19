@@ -25,7 +25,7 @@ public class ArmToHitWith : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-			col.gameObject.GetComponent<PlayerMove>().Hit(transform, SwingForce.x);
+			col.gameObject.GetComponent<PlayerMovement>().Hit(transform, SwingForce.x);
         }
     }
 

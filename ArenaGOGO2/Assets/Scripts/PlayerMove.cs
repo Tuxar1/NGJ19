@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 	public float HorizontalForce = 365f;
 	public float MaxXVelocity = 5f;
 	public float JumpVelocity = 1000f;
-	public Vector3 FacingDirection = new Vector3(1, 0, 0);
+	public Vector3 FacingDirection = new Vector3(-1, 0, 0);
 
 	public Rigidbody2D Rigidbody;
 	public PlayerInput input;
@@ -51,7 +51,6 @@ public class PlayerMove : MonoBehaviour
 		grounded = Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), 1 << LayerMask.NameToLayer("Ground"));
 		leftWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x - 0.75f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
 		rightWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x + 0.75f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
-		Debug.Log("Right wall: " + rightWall + "  Left wall: " + leftWall);
 	}
 
 	public void Hit(Transform arm, float strength)
