@@ -98,4 +98,10 @@ public class UIController : MonoBehaviour
 		Debug.LogError("I do not know the name of that color");
 		return "I do not know the name of that color";
 	}
+
+	public void GameModeName(string name)
+	{
+		WinText.color = Color.black;
+		WinText.text = name;
+	}
 }
