@@ -20,7 +20,7 @@ public class WinDoor : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            WinController.instance.CheckWinCondition(gameObject	, col.gameObject);
+            WinController.instance.CheckWinCondition(gameObject, col.gameObject);
         }
     }
 }
