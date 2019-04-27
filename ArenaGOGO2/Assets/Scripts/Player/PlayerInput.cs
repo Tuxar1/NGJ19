@@ -11,9 +11,10 @@ public class PlayerInput : MonoBehaviour
 	public Action<float> XAxis;
 	public Action<bool> AttackClicked;
 
-	void Start()
+	public void Setup(int playerID, Color color)
 	{
-		GetComponent<SpriteRenderer>().color = PlayerSetup.GetColorFromPlayerID(PlayerID);
+		PlayerID = playerID;
+		GetComponent<SpriteRenderer>().color = color;
 	}
 
 	// Update is called once per frame

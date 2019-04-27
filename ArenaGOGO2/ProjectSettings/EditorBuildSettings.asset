@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 718ca896bc5d5d6489d42c885594eef5
   - enabled: 1
-    path: Assets/Scenes/BoTestScene.unity
-    guid: 3b3617ac1f3e60f41ba805bee6b21d6e
+    path: Assets/Scenes/AtoBLevel.unity
+    guid: d7ff761258945d244b7ed3325af0dbea
   m_configObjects: {}

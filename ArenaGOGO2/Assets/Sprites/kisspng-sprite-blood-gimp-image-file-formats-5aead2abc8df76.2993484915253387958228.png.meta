@@ -1,0 +1,1201 @@
+fileFormatVersion: 2
+guid: 021718f91ab5e314281805094df28171
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4827511801016181753
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_0
+  - first:
+      213: 1070349670289211465
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_1
+  - first:
+      213: 7484199515805621294
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_2
+  - first:
+      213: 5085154839623231921
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_3
+  - first:
+      213: -2916710792997364810
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_4
+  - first:
+      213: 2876708428687527523
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_5
+  - first:
+      213: 8439257362077780466
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_6
+  - first:
+      213: -542523452592414097
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_7
+  - first:
+      213: 798056169824790479
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_8
+  - first:
+      213: 3581967709909385042
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_9
+  - first:
+      213: 7899117357434119420
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_10
+  - first:
+      213: -4224684587835915613
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_11
+  - first:
+      213: -9217634292923924296
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_12
+  - first:
+      213: 3779176703565879493
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_13
+  - first:
+      213: -7134930631427245257
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_14
+  - first:
+      213: 1190799530435243872
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_15
+  - first:
+      213: -6538022285226993693
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_16
+  - first:
+      213: 2484102763276930446
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_17
+  - first:
+      213: -6149093126879672734
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_18
+  - first:
+      213: -2825812480357420845
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_19
+  - first:
+      213: 4341993125493457652
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_20
+  - first:
+      213: 8284527598497917714
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_21
+  - first:
+      213: -7769653342317040010
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_22
+  - first:
+      213: -6434637984944483844
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_23
+  - first:
+      213: -6869373794307664851
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_24
+  - first:
+      213: 3374193072895337330
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_25
+  - first:
+      213: 8993139951526752892
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_26
+  - first:
+      213: -2028694870193328003
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_27
+  - first:
+      213: -5297531753258073154
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_28
+  - first:
+      213: -1386666017901515831
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_29
+  - first:
+      213: -3966254177141812031
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_30
+  - first:
+      213: 84833363249601485
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_31
+  - first:
+      213: 103208852918742916
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_32
+  - first:
+      213: 7594276842689382761
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_33
+  - first:
+      213: -8574081230524128186
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_34
+  - first:
+      213: -8574669257370425744
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_35
+  - first:
+      213: -2373552570598709197
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_36
+  - first:
+      213: 8466458750964314822
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_37
+  - first:
+      213: -1337972655065917689
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_38
+  - first:
+      213: -1284322283058986124
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_39
+  - first:
+      213: -3145152003382616336
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_40
+  - first:
+      213: -3791523806144744427
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_41
+  - first:
+      213: -5157699438721723136
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_42
+  - first:
+      213: 7067156514916584309
+    second: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_43
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_0
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 512
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd96b4becf10b74f8d3ffb0f7142f68
+      internalID: -4827511801016181753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_1
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 481
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1817152c44b041340895c232dcb3cdc5
+      internalID: 1070349670289211465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 476
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86ec535807c6f346814c0a9eda64768
+      internalID: 7484199515805621294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_3
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 434
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd1dd6411d70da54d8fce3e32c8c14cc
+      internalID: 5085154839623231921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_4
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 465
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d339e5f019734499a06dcb5d548d25
+      internalID: -2916710792997364810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_5
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 417
+        width: 84
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96c4c547354bafa4ea2a9f9e15064f4e
+      internalID: 2876708428687527523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_6
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 433
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c361e830b8711447b26b75d7e481466
+      internalID: 8439257362077780466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_7
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 455
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52db0f1a69dfbf24da7aa59cea4ce8a8
+      internalID: -542523452592414097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_8
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 431
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d455211dce8634a9a42b269bdf73e5
+      internalID: 798056169824790479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_9
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 401
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3016fe2deedd6341856d32e75c27068
+      internalID: 3581967709909385042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_10
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 414
+        width: 46
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811bf45d680f2b943ba2573f12fd6a83
+      internalID: 7899117357434119420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_11
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 423
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd015d833feb2249bef4b324e2e06b8
+      internalID: -4224684587835915613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_12
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 427
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf59336d524617459407e3f48346435
+      internalID: -9217634292923924296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_13
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 397
+        width: 75
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18639e7da95d9b408d070341090a9d3
+      internalID: 3779176703565879493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_14
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 394
+        width: 80
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531f740d4c3bc5e42ad748fb302ed6f8
+      internalID: -7134930631427245257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_15
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 407
+        width: 28
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f7551f25520914286d6e4c18f9f43e
+      internalID: 1190799530435243872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_16
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 409
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3964fe759c8bb6a46948e07f00f560ad
+      internalID: -6538022285226993693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 285
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983e213c934aedc448fd120d97326dc7
+      internalID: 2484102763276930446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 313
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8b12c53bedefa4e8c3ee5e1ac98d7d
+      internalID: -6149093126879672734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_19
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 324
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a8ba54b017dd949b8d2dc018b4bef5
+      internalID: -2825812480357420845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_20
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 290
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de5df4cd86c9514c84b002d342feb3e
+      internalID: 4341993125493457652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_21
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 289
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b680c9a8ebc0649b3cae921fcdf788
+      internalID: 8284527598497917714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_22
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 128
+        width: 69
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3131f0447d99a458cfa6de3bccdd14
+      internalID: -7769653342317040010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_23
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 160
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c4104e69b8b514d9cf31a9133987af
+      internalID: -6434637984944483844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_24
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 122
+        width: 99
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cbcd1f9538452d4eabe96aedecde09b
+      internalID: -6869373794307664851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_25
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 126
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a293aff512a80746ad97ccc6980146f
+      internalID: 3374193072895337330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_26
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 139
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a12ae94d1b2d74bb245c184a9c78c2
+      internalID: 8993139951526752892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_27
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 131
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ebc1a0bc145624cacbb90b6c1e16e2
+      internalID: -2028694870193328003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_28
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 23
+        width: 107
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4a796c4661f28499ff01537eb2f832
+      internalID: -5297531753258073154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_29
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 76
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57fe9d56870a094183db96cd44466a0
+      internalID: -1386666017901515831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_30
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 81
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059a6ad2bd5fb7147a54206bbc1e72a0
+      internalID: -3966254177141812031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_31
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 84
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb82a60f91d24a941bd77a04ffe83c4c
+      internalID: 84833363249601485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_32
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 56
+        width: 57
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e360e7471a17834f97c2035db274346
+      internalID: 103208852918742916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_33
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 30
+        width: 62
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa8b96249ebfee48b4e441b1944ed11
+      internalID: 7594276842689382761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_34
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 74
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa2a90180582204692e8ea0fd154000
+      internalID: -8574081230524128186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_35
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 76
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e2f43cc40392446a4c2634d3d0f939
+      internalID: -8574669257370425744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_36
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 63
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79dadecf685f5f14089be6f0daa50aa1
+      internalID: -2373552570598709197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_37
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 69
+        width: 29
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9707ca2e43e5b844e984c7125e07ed71
+      internalID: 8466458750964314822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_38
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 61
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef1aa12724cad24c8be7203452bac25
+      internalID: -1337972655065917689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_39
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 16
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efcf4dc98c339db49b0ae310da8f9d2e
+      internalID: -1284322283058986124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_40
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 52
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9375accb79893a54aac7235edb18a33f
+      internalID: -3145152003382616336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_41
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 4
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eb8b370461e1f49a79d9bebbfe828d
+      internalID: -3791523806144744427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_42
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 4
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fb6b57c2c103841993efbc162cc3c7
+      internalID: -5157699438721723136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kisspng-sprite-blood-gimp-image-file-formats-5aead2abc8df76.2993484915253387958228_43
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 4
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f206e4c61d37843a84ead56384a57c
+      internalID: 7067156514916584309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e23bfe947d2232b41846a7a1512706a7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
