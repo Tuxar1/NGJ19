@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -133,6 +133,7 @@ public class WinController : MonoBehaviour
 		BombSpawner.SpawnBombs = false;
 		BombSpawner.GravityBombs = false;
 		GravityController.mode = GravityController.GravityMode.Default;
+		Flag.ResetState();
 	}
 
 	public void PickNextGameMode()

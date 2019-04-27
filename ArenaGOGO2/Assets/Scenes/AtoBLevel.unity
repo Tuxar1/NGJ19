@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2332,6 +2332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flag
       objectReference: {fileID: 0}
+    - target: {fileID: 1047246916683965594, guid: 35b735603c1fb1f4393d55fb7d234f1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1047246916683965798, guid: 35b735603c1fb1f4393d55fb7d234f1d,
         type: 3}
       propertyPath: spawnPoint
@@ -2618,6 +2623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Endzone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734521394034216196, guid: 8cd9113b043dad046b41c586b7583231,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3734521394034216194, guid: 8cd9113b043dad046b41c586b7583231,
         type: 3}
