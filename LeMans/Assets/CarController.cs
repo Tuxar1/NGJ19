@@ -5,13 +5,20 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     private float speed = 5f;
-    private float rotationSpeed = 1f;
+    private float rotationSpeed = 2f;
 
-    public GameObject FrontLeft;
-    public GameObject FrontRight;
-    public GameObject BackLeft;
-    public GameObject BackRight;
     private float hoverHeight = 1.0f;
+
+    private float forwardVelocity = 0f;
+    private float upVelocity = 0f;
+    private float damp = 0.005f;
+    private float acceleration = 0.05f;
+    private float brake = 0.05f;
+    private float maxSpeed = 0.25f;
+
+    private bool jumpPressed;
+
+    public GameObject CarModel;
 
     // Start is called before the first frame update
     void Start()
@@ -20,33 +27,60 @@ public class CarController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        var pos = transform.position;
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(pos);
-        transform.position = new Vector3(pos.x,
-                                         terrainHeight + hoverHeight,
-                                         pos.z);
+        var rigidbody = this.GetComponent<Rigidbody>();
 
-        // Rotate to align with terrain
-        RaycastHit hit;
-        Physics.Raycast(this.transform.position, Vector3.down, out hit);
-        transform.up -= (transform.up - hit.normal) * 0.1f;
-
+        // Forward speed
         var target = this.transform.position;
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && forwardVelocity < maxSpeed && !jumpPressed)
         {
-            target += this.transform.forward;
+            forwardVelocity += acceleration;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) && forwardVelocity > 0 && !jumpPressed)
         {
-            transform.Rotate(Vector3.up, rotationSpeed);
+            forwardVelocity -= brake;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) && forwardVelocity <= 0 && forwardVelocity > -(maxSpeed / 2) && !jumpPressed)
         {
-            transform.Rotate(Vector3.up, -rotationSpeed);
+            forwardVelocity -= brake;
+        }
+        else if (forwardVelocity > 0 && !jumpPressed)
+        {
+            forwardVelocity -= damp;
+        }
+        else if (forwardVelocity < 0 && !jumpPressed)
+        {
+            forwardVelocity += damp;
+        }
+        else if (!jumpPressed)
+        {
+            forwardVelocity = 0;
+        }
+        target += this.transform.forward * forwardVelocity;
+
+
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space) && !jumpPressed)
+        {
+            jumpPressed = true;
+            rigidbody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
         }
 
-        this.transform.position = Vector3.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.RightArrow) && forwardVelocity != 0 && !jumpPressed)
+        {
+            rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) && forwardVelocity != 0 && !jumpPressed)
+        {
+            rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
+        }
+
+        rigidbody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        jumpPressed = false;
     }
 }
