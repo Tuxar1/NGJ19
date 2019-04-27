@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    public ParticleSystem ps;
+
     public Action PlayerDeathActions;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,16 @@ public class PlayerDeath : MonoBehaviour
 
     public void PlayerDie()
     {
+        ps.gameObject.transform.SetParent(null, true);
+        ps.Play();
         PlayerDeathActions();
         gameObject.SetActive(false);
+    }
+
+    public void ReclaimPSAndResetIt()
+    {
+        ps.Stop();
+        ps.transform.SetParent(gameObject.transform);
+        ps.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

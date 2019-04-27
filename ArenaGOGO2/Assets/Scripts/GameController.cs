@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
         foreach (var player in playerSpawnPos.Keys)
         {
             player.transform.position = playerSpawnPos[player];
+            player.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
             player.SetActive(true);
         }
     }
