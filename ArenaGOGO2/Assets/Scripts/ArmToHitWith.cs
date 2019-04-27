@@ -27,6 +27,10 @@ public class ArmToHitWith : MonoBehaviour
         {
 			col.gameObject.GetComponent<PlayerMovement>().Hit(transform, SwingForce.x);
         }
+        else if (col.gameObject.tag == "Lever")
+        {
+            col.gameObject.GetComponent<Lever>().ChangeLeverState();
+        }
     }
 
     public void DoSwing(Vector3 direction)

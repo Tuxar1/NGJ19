@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private bool isSwinging = false;
     public float SwingCooldown = 0.2f;
     public float SwingTime = 0.2f;
-    public PlayerMove playerMovement;
+    public PlayerMovement playerMovement;
 	public PlayerInput input;
     public PlayerDeath playerDeath;
     public Sprite Attack;
