@@ -11,19 +11,44 @@ public class CarController : MonoBehaviour
 
     private float forwardVelocity = 0f;
     private float upVelocity = 0f;
-    private float damp = 0.005f;
-    private float acceleration = 0.05f;
-    private float brake = 0.05f;
+    private float dampForce = 0.005f;
+    private float accelerationForce = 0.05f;
+    private float brakeForce = 0.05f;
     private float maxSpeed = 0.25f;
 
     private bool jumpPressed;
 
     public GameObject CarModel;
 
+    private KeyCode AccelerationKey;
+    private KeyCode BrakeKey;
+    private KeyCode LeftKey;
+    private KeyCode RightKey;
+    private KeyCode JumpKey;
+
+    public PlayerID PlayerID = PlayerID.Player1;
+
     // Start is called before the first frame update
     void Start()
     {
+        switch (PlayerID)
+        {
+            case PlayerID.Player1:
+                AccelerationKey = KeyCode.UpArrow;
+                BrakeKey = KeyCode.DownArrow;
+                LeftKey = KeyCode.LeftArrow;
+                RightKey = KeyCode.RightArrow;
+                JumpKey = KeyCode.Minus;
+                break;
 
+            case PlayerID.Player2:
+                AccelerationKey = KeyCode.W;
+                BrakeKey = KeyCode.S;
+                LeftKey = KeyCode.A;
+                RightKey = KeyCode.D;
+                JumpKey = KeyCode.Space;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -33,25 +58,25 @@ public class CarController : MonoBehaviour
 
         // Forward speed
         var target = this.transform.position;
-        if (Input.GetKey(KeyCode.UpArrow) && forwardVelocity < maxSpeed && !jumpPressed)
+        if (Input.GetKey(AccelerationKey) && forwardVelocity < maxSpeed && !jumpPressed)
         {
-            forwardVelocity += acceleration;
+            forwardVelocity += accelerationForce;
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && forwardVelocity > 0 && !jumpPressed)
+        else if (Input.GetKey(BrakeKey) && forwardVelocity > 0 && !jumpPressed)
         {
-            forwardVelocity -= brake;
+            forwardVelocity -= brakeForce;
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && forwardVelocity <= 0 && forwardVelocity > -(maxSpeed / 2) && !jumpPressed)
+        else if (Input.GetKey(BrakeKey) && forwardVelocity <= 0 && forwardVelocity > -(maxSpeed / 2) && !jumpPressed)
         {
-            forwardVelocity -= brake;
+            forwardVelocity -= brakeForce;
         }
         else if (forwardVelocity > 0 && !jumpPressed)
         {
-            forwardVelocity -= damp;
+            forwardVelocity -= dampForce;
         }
         else if (forwardVelocity < 0 && !jumpPressed)
         {
-            forwardVelocity += damp;
+            forwardVelocity += dampForce;
         }
         else if (!jumpPressed)
         {
@@ -61,17 +86,17 @@ public class CarController : MonoBehaviour
 
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && !jumpPressed)
+        if (Input.GetKeyDown(JumpKey) && !jumpPressed)
         {
             jumpPressed = true;
             rigidbody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && forwardVelocity != 0 && !jumpPressed)
+        if (Input.GetKey(RightKey) && forwardVelocity != 0 && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && forwardVelocity != 0 && !jumpPressed)
+        if (Input.GetKey(LeftKey) && forwardVelocity != 0 && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
@@ -83,4 +108,10 @@ public class CarController : MonoBehaviour
     {
         jumpPressed = false;
     }
+}
+
+public enum PlayerID
+{
+    Player1 = 1,
+    Player2 = 2,
 }
