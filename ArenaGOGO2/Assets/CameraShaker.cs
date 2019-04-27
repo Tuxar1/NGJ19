@@ -40,7 +40,7 @@ public class CameraShaker : MonoBehaviour
 			x *= magnitude * damper;
 			y *= magnitude * damper;
 
-			Camera.main.transform.position = new Vector3(x, y, origZ);
+			Camera.main.transform.position = new Vector3(x, y + 1, origZ);
 
 			yield return null;
 		}
