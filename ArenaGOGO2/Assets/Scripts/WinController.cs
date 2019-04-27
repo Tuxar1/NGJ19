@@ -26,7 +26,7 @@ public enum EnvironmentMods
 public class WinController : MonoBehaviour
 {
     public EnvironmentMods environmentMods;
-    public WinConditions winPossibilities;
+    public WinConditions winCondition;
     public static WinController instance = null;
     public GameObject[] playerRefs;
     public List<PlatformScript> platforms;
@@ -63,7 +63,7 @@ public class WinController : MonoBehaviour
 
     public void CheckWinCondition(GameObject asker, GameObject playerGo)
     {
-        switch (winPossibilities)
+        switch (winCondition)
         {
             case WinConditions.OneReachGoal:
                 if (asker.GetComponent<WinDoor>() != null)

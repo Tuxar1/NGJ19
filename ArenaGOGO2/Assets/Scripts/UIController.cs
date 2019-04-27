@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     {
         WinController.instance.WinActions += HandlePlayerWon;
         GameController.instance.RestartAction += HandleRestart;
+        HandleRestart();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class UIController : MonoBehaviour
     public void HandlePlayerWon(string playerName)
     {
         string winText = "Good job everyone is a winner!";
-        if (string.IsNullOrWhiteSpace(playerName))
+        if (!string.IsNullOrWhiteSpace(playerName))
         {
             winText = "Player " + playerName + " won!";
         }

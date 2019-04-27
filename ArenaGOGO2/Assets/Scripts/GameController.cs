@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private SpawnPoint[] Spawners;
     private Dictionary<GameObject, Vector3> playerSpawnPos = new Dictionary<GameObject, Vector3>();
     public Action RestartAction;
+    public Action AfterRestartAction;
 
     void Awake()
     {
@@ -39,12 +40,14 @@ public class GameController : MonoBehaviour
 
     public void HandleRestart()
     {
+        RestartAction();
         foreach (var player in playerSpawnPos.Keys)
         {
             player.transform.position = playerSpawnPos[player];
             player.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
             player.SetActive(true);
         }
+        AfterRestartAction();
     }
 
 	private void SetupSpawners()
