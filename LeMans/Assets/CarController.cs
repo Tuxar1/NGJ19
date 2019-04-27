@@ -28,9 +28,14 @@ public class CarController : MonoBehaviour
 
     public PlayerID PlayerID = PlayerID.Player1;
 
+    private Vector3 startPos;
+    private Quaternion starRotation;
+
     // Start is called before the first frame update
     void Start()
     {
+        startPos = this.transform.position;
+        starRotation = this.transform.rotation;
         switch (PlayerID)
         {
             case PlayerID.Player1:
@@ -102,6 +107,12 @@ public class CarController : MonoBehaviour
         }
 
         rigidbody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
+
+        if(this.transform.position.y < -5)
+        {
+            this.transform.position = startPos;
+            this.transform.rotation = starRotation;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
