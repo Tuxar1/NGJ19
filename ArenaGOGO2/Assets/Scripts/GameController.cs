@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
 				if (player.Item1 == spawner.PlayerID)
 				{
 					SpawnPlayer(player.Item1, player.Item2, spawner);
+					break;
 				}
 			}
 		}

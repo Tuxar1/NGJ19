@@ -21,8 +21,8 @@ public class MenuScene : MonoBehaviour
 		Color.yellow,
 		Color.magenta,
 		Color.cyan,
-		new Color(128,255,0),
-		new Color(225,128,0),
+		new Color(0.5f,1f,0),
+		new Color(1f,0.5f,0),
 	};
 
 	public MenuPlayer[] menuPlayers;
