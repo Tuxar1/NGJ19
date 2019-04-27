@@ -26,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!isSwinging)
         {
-            print(Attack);
             spriteRenderer.sprite = Attack;
             ArmSwingObject.DoSwing(playerMovement.FacingDirection);
             isSwinging = true;

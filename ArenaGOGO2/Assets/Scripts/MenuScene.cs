@@ -46,7 +46,9 @@ public class MenuScene : MonoBehaviour
 	void Start()
     {
 		joinedPlayers = new JoinedPlayer[MaxPlayers];
-    }
+		var random = new System.Random();
+		SelectableColors = SelectableColors.OrderBy(x => random.Next()).ToArray();
+	}
 
     // Update is called once per frame
     void Update()
@@ -167,7 +169,7 @@ public class MenuScene : MonoBehaviour
 			{
 				var jumpKey = player.InputID == 1 ? KeyCode.UpArrow : KeyCode.W;
 				var attackKey = player.InputID == 1 ? KeyCode.RightControl : KeyCode.LeftControl;
-				PlayerSetup.SetUpKeyboardPlayer(player.InputID, i, "Key" + i + HorizontalName, jumpKey, attackKey, player.SelectedColor);
+				PlayerSetup.SetUpKeyboardPlayer(player.InputID, i, "Key" + player.InputID + HorizontalName, jumpKey, attackKey, player.SelectedColor);
 			}
 		}
 		SceneManager.LoadScene(1);
