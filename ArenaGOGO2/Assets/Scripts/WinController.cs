@@ -24,6 +24,10 @@ public enum EnvironmentMods
     PlatformsInvisible,
     PlatformsDisappearing,
     HardMode,
+	LowGravity,
+	HighGravity,
+	LerpingGravity,
+	HeavyWinds,
 }
 
 public class WinController : MonoBehaviour
@@ -57,7 +61,9 @@ public class WinController : MonoBehaviour
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
         new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
-    };
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity),
+		new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.LerpingGravity),
+	};
     private int gamesModesIterator = 0;
 
     void Awake()
@@ -90,6 +96,7 @@ public class WinController : MonoBehaviour
 
     public void SetEnvironmentMods()
     {
+		ResetEnvironmentMods();
         switch(environmentMod)
         {
             case EnvironmentMods.HardMode:
@@ -103,13 +110,32 @@ public class WinController : MonoBehaviour
 				BombSpawner.SpawnBombs = true;
 				BombSpawner.GravityBombs = true;
 				break;
-            default:
-                hardModeHolder.SetActive(false);
+			case EnvironmentMods.LowGravity:
+				GravityController.mode = GravityController.GravityMode.Low;
+				break;
+			case EnvironmentMods.HighGravity:
+				GravityController.mode = GravityController.GravityMode.High;
+				break;
+			case EnvironmentMods.LerpingGravity:
+				GravityController.mode = GravityController.GravityMode.Pulsating;
+				break;
+			case EnvironmentMods.HeavyWinds:
+				GravityController.mode = GravityController.GravityMode.HeavyWinds;
+				break;
+			default:
                 break;
         }
     }
 
-    public void PickNextGameMode()
+	public void ResetEnvironmentMods()
+	{
+		hardModeHolder.SetActive(false);
+		BombSpawner.SpawnBombs = false;
+		BombSpawner.GravityBombs = false;
+		GravityController.mode = GravityController.GravityMode.Default;
+	}
+
+	public void PickNextGameMode()
     {
         winCondition = gameModes[gamesModesIterator].winCondition;
         environmentMod = gameModes[gamesModesIterator].environmentMods;
