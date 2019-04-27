@@ -70,6 +70,9 @@ public class WinController : MonoBehaviour
             case EnvironmentMods.HardMode:
                 hardModeHolder.SetActive(true);
                 break;
+			case EnvironmentMods.SpikesUnderYou:
+				BombSpawner.SpawnBombs = true;
+				break;
             default:
                 hardModeHolder.SetActive(false);
                 break;

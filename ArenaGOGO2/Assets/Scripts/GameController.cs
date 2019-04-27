@@ -98,5 +98,10 @@ public class GameController : MonoBehaviour
 		playerGO.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
 		playerGO.SetActive(true);
 	}
+
+	public GameObject[] GetPlayerGameObjects()
+	{
+		return playerSpawnPos.Keys.ToArray();
+	}
 }
 
