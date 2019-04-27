@@ -161,7 +161,7 @@ public class MenuScene : MonoBehaviour
 			}
 			if (player.InputType == InputType.Joystick)
 			{
-				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + i + HorizontalName, BaseJoyName + i + JumpName, BaseJoyName + i + AttackName, player.SelectedColor);
+				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + player.InputID + HorizontalName, BaseJoyName + player.InputID + JumpName, BaseJoyName + player.InputID + AttackName, player.SelectedColor);
 			}
 			else
 			{

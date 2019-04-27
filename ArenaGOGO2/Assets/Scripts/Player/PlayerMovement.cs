@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
 	public float WallJumpSpeed = 15f;
 	public Vector3 FacingDirection = new Vector3(-1, 0, 0);
 
+	private float ChangingDirectionBonusFactor = 3;
+	private float GroundDeaccelarationBonusFactor = 5;
+	private float FlyingXDampFactor = 0.95f;
+
 	public Rigidbody2D Rigidbody;
 	public PlayerInput input;
 	public BoxCollider2D Collider;
@@ -46,17 +50,6 @@ public class PlayerMovement : MonoBehaviour
 	private void xChanged(float x)
 	{
 		xInput = x;
-	}
-
-	// Update is called once per frame
-	void Update()
-    {
-		//grounded = Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), 1 << LayerMask.NameToLayer("Ground"));
-		//leftWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x - 0.5f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
-		//rightWall = Physics2D.Linecast(transform.position, new Vector2(transform.position.x + 0.5f, transform.position.y), 1 << LayerMask.NameToLayer("Ground"));
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), Color.red);
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x - 0.5f, transform.position.y), Color.blue);
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x + 0.5f, transform.position.y), Color.green);
 	}
 
 	public void Hit(Transform arm, float strength)
@@ -102,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
 					rightWall = true;
 				}
 			}
-			
 		}
 	}
 
@@ -139,20 +131,24 @@ public class PlayerMovement : MonoBehaviour
 		if (grounded)
 		{
 			move = xInput * GroundSpeed;
-			if (changingDirection || xInput == 0)
+			if (changingDirection)
 			{
-				acceleration *= 2;
+				acceleration *= ChangingDirectionBonusFactor;
+			}
+			else if (xInput == 0)
+			{
+				acceleration *= GroundDeaccelarationBonusFactor;
 			}
 		}
 		else
 		{
 			if (changingDirection)
 			{
-				acceleration *= 2;
+				acceleration *= ChangingDirectionBonusFactor;
 			}
 			if (xInput == 0)
 			{
-				move = momentum.x;
+				move = momentum.x * FlyingXDampFactor;
 			}
 			else
 			{

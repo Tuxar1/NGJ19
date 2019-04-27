@@ -53,6 +53,11 @@ public class PlayerSetup
 
 	public static void SetUpDefaultIfNoData()
 	{
+		if (playerID2InputData.Any())
+		{
+			return;
+		}
+		Debug.Log("setup default");
 		var player1Input = new PlayerData
 		{
 			JumpKey = KeyCode.UpArrow,
