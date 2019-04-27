@@ -22,12 +22,6 @@ public class PlayerAttack : MonoBehaviour
         playerDeath.PlayerDeathActions += ForceResetAttack;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // HandleAttackPressed();
-    }
-
     private void HandleAttackPressed(bool val)
     {
         if (!isSwinging)

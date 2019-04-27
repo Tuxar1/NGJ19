@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
 
         players = GameObject.FindGameObjectsWithTag("Player");
         playerSpawnPos = players.ToDictionary(k => k, v => new Vector3(v.transform.position.x, v.transform.position.y, v.transform.position.z));
+		PlayerSetup.SetUpDefaultIfNoData();
     }
 
 
