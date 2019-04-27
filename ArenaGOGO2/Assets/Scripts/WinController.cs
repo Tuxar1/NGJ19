@@ -16,7 +16,8 @@ public enum WinConditions
 public enum EnvironmentMods
 {
     Standard,
-    SpikesUnderYou,
+    BombsUnderYou,
+	BombsUnderYouWithGravity,
     TrapsDontKillYou,
     PlatformsAreDeadly,
     SpikesAreSafe,
@@ -70,8 +71,13 @@ public class WinController : MonoBehaviour
             case EnvironmentMods.HardMode:
                 hardModeHolder.SetActive(true);
                 break;
-			case EnvironmentMods.SpikesUnderYou:
+			case EnvironmentMods.BombsUnderYou:
 				BombSpawner.SpawnBombs = true;
+				BombSpawner.GravityBombs = false;
+				break;
+			case EnvironmentMods.BombsUnderYouWithGravity:
+				BombSpawner.SpawnBombs = true;
+				BombSpawner.GravityBombs = true;
 				break;
             default:
                 hardModeHolder.SetActive(false);

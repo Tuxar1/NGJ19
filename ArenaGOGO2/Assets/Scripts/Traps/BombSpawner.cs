@@ -5,9 +5,9 @@ using UnityEngine;
 public class BombSpawner : MonoBehaviour
 {
 	public static bool SpawnBombs = false;
+	public static bool GravityBombs = true;
 	public GameObject BombPrefab;
 	public float TimeBetweenBombs = 5f;
-	public bool GravityBombs = true;
 
 	private Dictionary<GameObject, float> timeToBombForPlayer = new Dictionary<GameObject, float>();
 	private GameObject[] players;
