@@ -18,6 +18,7 @@ public class PlayerFallOfMapScript : MonoBehaviour
         if (this.transform.position.y < -5)
         {
             transform.position = playerKeysScript.spawnPoint;
+            transform.rotation = Quaternion.identity;
         }
     }
 }

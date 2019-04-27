@@ -31,7 +31,6 @@ public class PickupFlag : MonoBehaviour
 		{
 			rigidBody.constraints = RigidbodyConstraints2D.None;
 			rigidBody.isKinematic = false;
-
 		}
 		isPickedUp = false;
         gameObject.transform.position = spawnPoint.position;
@@ -49,6 +48,10 @@ public class PickupFlag : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
+		if (!GameController.GameHasStarted)
+		{
+			return;
+		}
         if (col.gameObject.tag == "Player")
         {
             if (isPickedUp)

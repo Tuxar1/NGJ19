@@ -27,7 +27,7 @@ public class Lever : MonoBehaviour
         leverState++;
         if (leverState > 2)
         {
-            leverState = 0;
+            leverState = 1;
         }
 
         switch(leverState)
@@ -52,7 +52,7 @@ public class Lever : MonoBehaviour
 
     private void ResetLeverState()
     {
-        leverState = 3;
+        leverState = -1;
         ChangeLeverState();
     }
 

@@ -85,11 +85,11 @@ public class RoadGeneration : MonoBehaviour
             player1.transform.LookAt(fin.transform.position);
             player1.transform.position -= player1.transform.right;
             player1.PlayerID = PlayerID.Player1;
-            player1.spawnPoint = StartPosition;
+            player1.spawnPoint = player1.transform.position;
 
         var player2 = Instantiate(Player2, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
             player2.transform.LookAt(fin.transform.position);
-            player2.transform.position += player2.transform.right * 0.02f;
+            player2.transform.position += player2.transform.right * 0.1f;
             player2.PlayerID = PlayerID.Player2;
             player2.spawnPoint = player2.transform.position;
     }

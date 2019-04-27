@@ -37,10 +37,12 @@ public class WinController : MonoBehaviour
     {
         public WinConditions winCondition;
         public EnvironmentMods environmentMods;
-        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods)
+		public string name;
+        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods, string name)
         {
             this.winCondition = winCondition;
             this.environmentMods = environmentMods;
+			this.name = name;
         }
     }
 
@@ -53,6 +55,8 @@ public class WinController : MonoBehaviour
 
     public GameObject hardModeHolder;
 
+	public UIController UIController;
+
     public Action<Color> WinActions;
     public PickupFlag Flag;
 
@@ -63,15 +67,15 @@ public class WinController : MonoBehaviour
     private Coroutine deadlyPlatformRoutine;
 
     private GameModes[] gameModes = {
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.BombsUnderYouWithGravity),
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.DeadlyIntervalPlatforms),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
-        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.DeadlyIntervalPlatforms),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity),
-		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
+        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard, ""),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.HeavyWinds, "???"),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity, "The moon"),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.DeadlyIntervalPlatforms, "What do the colors signify?"),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity, "???"),
 	};
     private int gamesModesIterator = 0;
 
@@ -92,7 +96,8 @@ public class WinController : MonoBehaviour
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
         GameController.instance.RestartAction += PickNextGameMode;
         GameController.instance.RestartAction += SetEnvironmentMods;
-        PickNextGameMode();
+		GameController.instance.AfterRestartAction += InitializeWinCondition;
+		PickNextGameMode();
         SetEnvironmentMods();
         InitializeWinCondition();
     }
@@ -147,13 +152,14 @@ public class WinController : MonoBehaviour
 		BombSpawner.GravityBombs = false;
 		GravityController.mode = GravityController.GravityMode.Default;
 		Flag.ResetState();
-        ResetDeadlyPlatforms();
+        ResetPlatforms();
 	}
 
 	public void PickNextGameMode()
     {
         winCondition = gameModes[gamesModesIterator].winCondition;
         environmentMod = gameModes[gamesModesIterator].environmentMods;
+		UIController.GameModeName(gameModes[gamesModesIterator].name);
         gamesModesIterator++;
         if (gamesModesIterator > gameModes.Length - 1)
         {
@@ -200,8 +206,11 @@ public class WinController : MonoBehaviour
 
                 break;
             case WinConditions.CaptureTheFlag:
-                Win(playerGo, winCondition);
-                break;
+				if (asker.tag == "Flag")
+				{
+					Win(playerGo, winCondition);
+				}
+				break;
         }
     }
 
@@ -212,6 +221,7 @@ public class WinController : MonoBehaviour
 
     public void Win(WinConditions winCondition)
     {
+		GameController.GameHasStarted = false;
 		foreach (var player in playerRefs)
 		{
 			ScoreSystem.AwardPoints(player.GetComponent<PlayerInput>().PlayerID, winCondition);
@@ -221,6 +231,7 @@ public class WinController : MonoBehaviour
 
 	public void Win(GameObject player, WinConditions winCondition)
     {
+		GameController.GameHasStarted = false;
 		var playerID = player.GetComponent<PlayerInput>().PlayerID;
 		ScoreSystem.AwardPoints(playerID, winCondition);
 		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);
@@ -252,12 +263,12 @@ public class WinController : MonoBehaviour
         }
     }
 
-    public void ResetDeadlyPlatforms()
+    public void ResetPlatforms()
     {
         isDeadlyPlatforms = false;
         foreach(var platform in platforms)
         {
-            platform.ResetDeadlyPlatform();
+            platform.ResetPlatform();
         }
     }
 

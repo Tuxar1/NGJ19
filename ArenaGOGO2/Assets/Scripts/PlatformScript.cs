@@ -37,11 +37,10 @@ public class PlatformScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            // print(col);
             hasBeenTouched = true;
             if (isPlatformWin)
             {
-                spriteRenderer.color = Color.green;
+				spriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
                 WinController.instance.CheckWinCondition(gameObject, col.gameObject);
             }
 
@@ -87,16 +86,17 @@ public class PlatformScript : MonoBehaviour
         isDeadly = true;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(deadlyPlatformInterval);
-        ResetDeadlyPlatform();
+        ResetPlatform();
     }
 
-    public void ResetDeadlyPlatform()
+    public void ResetPlatform()
     {
         isDeadly = false;
+        spriteRenderer.color = initColor;
+        hasBeenTouched = false;
         if (deadlyPlatformRoutine != null)
         {
             StopCoroutine(deadlyPlatformRoutine);
-            spriteRenderer.color = initColor;
             deadlyPlatformRoutine = null;
         }
         IsInDeadlySequence = false;

@@ -71,7 +71,6 @@ public class UIController : MonoBehaviour
 		{
 			playerScore.gameObject.SetActive(false);
 		}
-        WinText.text = "";
 		Panel.SetActive(false);
 		StartText.SetActive(false);
 		showing = false;
@@ -95,7 +94,30 @@ public class UIController : MonoBehaviour
 		{
 			return "Yellow";
 		}
+		if (color == Color.magenta)
+		{
+			return "Magenta";
+		}
+		if (color == Color.cyan)
+		{
+			return "Cyan";
+		}
+		if (color == new Color(0.5f,1f,0))
+		{
+			return "Purple";
+		}
+		if (color == new Color(1f,0.5f,0))
+		{
+			return "Orange";
+		}
+
 		Debug.LogError("I do not know the name of that color");
 		return "I do not know the name of that color";
+	}
+
+	public void GameModeName(string name)
+	{
+		WinText.color = Color.black;
+		WinText.text = name;
 	}
 }
