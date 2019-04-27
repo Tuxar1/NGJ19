@@ -15,7 +15,7 @@ public class BombSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (!(!SpawnBombs && GameController.GameHasStarted && PlayerSetup.AllowInput))
+		if (!(SpawnBombs && GameController.GameHasStarted && PlayerSetup.AllowInput))
 		{
 			return;
 		}

@@ -23,5 +23,10 @@ public class CameraFollowScript : MonoBehaviour
         transform.position = smoothedPosition;
 
         transform.LookAt(target);
+
+        if (transform.position.y < target.transform.position.y)
+        {
+            transform.position = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
+        }
     }
 }

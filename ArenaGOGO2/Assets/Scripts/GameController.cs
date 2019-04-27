@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
 	public static bool GameHasStarted = false;
 	public float ContinuousRespawnTime = 5f;
 
+	private CameraShaker camShake;
+
     void Awake()
     {
         if (instance == null)
@@ -52,7 +54,8 @@ public class GameController : MonoBehaviour
         }
         AfterRestartAction();
 		PlayerSetup.AllowInput = true;
-    }
+		GameHasStarted = true;
+	}
 
 	private void SetupSpawners()
 	{
@@ -88,6 +91,12 @@ public class GameController : MonoBehaviour
 
 	public void PlayerDied(GameObject player)
 	{
+		if (camShake == null)
+		{
+			camShake = Camera.main.GetComponent<CameraShaker>();
+		}
+		camShake.DoShake();
+
 		StartCoroutine(ResetPlayer(player, ContinuousRespawnTime));
 	}
 
@@ -95,7 +104,7 @@ public class GameController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(time);
 		playerGO.transform.position = playerSpawnPos[playerGO];
-		playerGO.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
+		playerGO.GetComponent<PlayerDeath>().Reset();
 		playerGO.SetActive(true);
 	}
 

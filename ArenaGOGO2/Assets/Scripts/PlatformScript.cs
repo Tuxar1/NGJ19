@@ -6,7 +6,7 @@ public class PlatformScript : MonoBehaviour
 {
     public bool hasBeenTouched = false;
     private SpriteRenderer spriteRenderer;
-    private bool isPlatformWin = false; 
+    private bool isPlatformWin = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +25,10 @@ public class PlatformScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            // print(col);
             hasBeenTouched = true;
             if (isPlatformWin)
             {
-                spriteRenderer.color = Color.green;
+				spriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
                 WinController.instance.CheckWinCondition(gameObject, col.gameObject);
             }
         }
@@ -43,4 +42,13 @@ public class PlatformScript : MonoBehaviour
             isPlatformWin = true;
         }
     }
+
+	public void Reset()
+	{
+		hasBeenTouched = false;
+		if (spriteRenderer != null)
+		{
+			spriteRenderer.color = Color.white;
+		}
+	}
 }

@@ -8,6 +8,8 @@ public class PlayerDeath : MonoBehaviour
     public ParticleSystem ps;
 
     public Action PlayerDeathActions;
+
+	private bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,11 @@ public class PlayerDeath : MonoBehaviour
 
     public void PlayerDie()
     {
+		if (dead)
+		{
+			return;
+		}
+		dead = true;
         ps.gameObject.transform.SetParent(null, true);
         ps.Play();
         PlayerDeathActions();
@@ -29,7 +36,13 @@ public class PlayerDeath : MonoBehaviour
 		GameController.instance.PlayerDied(gameObject);
     }
 
-    public void ReclaimPSAndResetIt()
+	public void Reset()
+	{
+		dead = false;
+		ReclaimPSAndResetIt();
+	}
+
+	public void ReclaimPSAndResetIt()
     {
         ps.Stop();
         ps.transform.SetParent(gameObject.transform);
