@@ -19,7 +19,7 @@ public class SimpleCarController : MonoBehaviour
     public float maxSteeringAngle;
     private Rigidbody rigidbody;
 
-    private float MAX_SPEED = 1f;
+    private float MAX_SPEED = 1.5f;
     private float SPEED = 0f;
     private float LERP_SPEED = 0.2f;
     private float rotationSpeed = 1;
@@ -58,30 +58,22 @@ public class SimpleCarController : MonoBehaviour
 
     void OnCollisionEnter (Collision col)
     {
-        isGrounded = (col.gameObject.tag == GameTags.Tags.Ground.ToString());
+        isGrounded = true;//(col.gameObject.tag == GameTags.Tags.Ground.ToString());
     }
 
     private void checkControls()
     {
-        // JUMP
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (isGrounded)
         {
-            rigidbody.AddForce(Vector3.up * 10000f, ForceMode.Impulse);
-            isGrounded = false;
-        }
+            // JUMP
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rigidbody.AddForce(Vector3.up * 10000f, ForceMode.Impulse);
+                isGrounded = false;
+            }
 
-        // FORWARD & BACKWARDS
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            // SET SPEED FORWARD
-            SPEED = Mathf.Lerp(SPEED, MAX_SPEED, LERP_SPEED);
-            applySpeed(SPEED);
-        }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
-        {
-            // SET SPEED BACKWARDS
-            SPEED = Mathf.Lerp(SPEED, -MAX_SPEED, LERP_SPEED);
-            applySpeed(SPEED);
+            // FORWARD & BACKWARDS
+            updateSpeeding();
         }
         
         // ROTATE LEFT & RIGHT
@@ -95,11 +87,50 @@ public class SimpleCarController : MonoBehaviour
         }
     }
 
+    private void updateSpeeding()
+    {
+        if (isGrounded)
+        {
+            Debug.Log("rigid speed: "+rigidbody.velocity);
+            if (SPEED < 0.1 && SPEED > -0.1)
+            {
+                rigidbody.AddForce( rigidbody.transform.forward * 200f, ForceMode.Impulse);
+            }
+
+            if (isSpeedingForward())
+            {
+                // SET SPEED FORWARD
+                SPEED = Mathf.Lerp(SPEED, MAX_SPEED, LERP_SPEED);
+                applySpeed(SPEED);
+            }
+            else if (isSpeedingBackwards())
+            {
+                // SET SPEED BACKWARDS
+                SPEED = Mathf.Lerp(SPEED, -MAX_SPEED, LERP_SPEED);
+                applySpeed(SPEED);
+            }
+        }
+        else if (isSpeedingForward() == false && isSpeedingBackwards() == false)
+        {
+            SPEED = Mathf.Lerp(SPEED, 0, LERP_SPEED);
+        }
+    }
+
+    private bool isSpeedingBackwards()
+    {
+        return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+    }
+
+    private bool isSpeedingForward()
+    {
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+    }
+
     private void applySpeed(float speed)
     {
         if (speed < MAX_SPEED && speed > -MAX_SPEED)
         {
-            rigidbody.AddForce(rigidbody.transform.forward * 200f * speed, ForceMode.Impulse);
+            rigidbody.AddForce( rigidbody.transform.forward * 200f * speed, ForceMode.Impulse);
         }
 
         //var target = Quaternion.LookRotation((transform.position + rigidbody.velocity) - this.transform.position);
@@ -115,29 +146,32 @@ public class SimpleCarController : MonoBehaviour
     private void updateGravity()
     { 
         Vector3 gravity = (carGrvity - Physics.gravity);
-        Debug.Log( gravity  + ", " +rigidbody.mass);
+        //Debug.Log( gravity  + ", " +rigidbody.mass);
         rigidbody.AddForce( gravity * rigidbody.mass);
     }
 
     private void updateSteering()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-
-        foreach (AxleInfo axleInfo in axleInfos)
+        if (isGrounded)
         {
-            if (axleInfo.steering)
+            float motor = maxMotorTorque * Input.GetAxis("Vertical");
+            float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+
+            foreach (AxleInfo axleInfo in axleInfos)
             {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
+                if (axleInfo.steering)
+                {
+                    axleInfo.leftWheel.steerAngle = steering;
+                    axleInfo.rightWheel.steerAngle = steering;
+                }
+                if (axleInfo.motor)
+                {
+                    axleInfo.leftWheel.motorTorque = motor;
+                    axleInfo.rightWheel.motorTorque = motor;
+                }
+                ApplyLocalPositionToVisuals(axleInfo.leftWheel);
+                ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
-            if (axleInfo.motor)
-            {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
-            }
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
     }
 }

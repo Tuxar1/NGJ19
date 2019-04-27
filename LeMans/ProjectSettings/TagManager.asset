@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
   - Goal
+  - Road
   layers:
   - Default
   - TransparentFX

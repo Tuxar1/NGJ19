@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
 		SetupSpawners();
 		SpawnPlayers();
 		GameHasStarted = true;
+		PlayerSetup.AllowInput = true;
     }
 
     //Update is called every frame.
@@ -47,9 +48,10 @@ public class GameController : MonoBehaviour
         RestartAction();
         foreach (var player in playerSpawnPos.Keys)
         {
-			ResetPlayer(player, 0);
+			StartCoroutine(ResetPlayer(player, 0f));
         }
         AfterRestartAction();
+		PlayerSetup.AllowInput = true;
     }
 
 	private void SetupSpawners()
@@ -95,6 +97,11 @@ public class GameController : MonoBehaviour
 		playerGO.transform.position = playerSpawnPos[playerGO];
 		playerGO.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
 		playerGO.SetActive(true);
+	}
+
+	public GameObject[] GetPlayerGameObjects()
+	{
+		return playerSpawnPos.Keys.ToArray();
 	}
 }
 

@@ -25,12 +25,19 @@ public class CarController : MonoBehaviour
     private KeyCode LeftKey;
     private KeyCode RightKey;
     private KeyCode JumpKey;
+    private KeyCode ShootKey;
 
     public PlayerID PlayerID = PlayerID.Player1;
+    public GameObject Missile;
+
+    private Queue positionList;
+    private Queue rotationList;
 
     // Start is called before the first frame update
     void Start()
     {
+        positionList = new Queue();
+        rotationList = new Queue();
         switch (PlayerID)
         {
             case PlayerID.Player1:
@@ -39,6 +46,7 @@ public class CarController : MonoBehaviour
                 LeftKey = KeyCode.LeftArrow;
                 RightKey = KeyCode.RightArrow;
                 JumpKey = KeyCode.Minus;
+                ShootKey = KeyCode.Period;
                 break;
 
             case PlayerID.Player2:
@@ -46,7 +54,8 @@ public class CarController : MonoBehaviour
                 BrakeKey = KeyCode.S;
                 LeftKey = KeyCode.A;
                 RightKey = KeyCode.D;
-                JumpKey = KeyCode.Space;
+                JumpKey = KeyCode.F;
+                ShootKey = KeyCode.G;
                 break;
         }
     }
@@ -92,21 +101,61 @@ public class CarController : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
         }
 
-        if (Input.GetKey(RightKey) && forwardVelocity != 0 && !jumpPressed)
+        // Jump
+        if (Input.GetKeyDown(ShootKey))
+        {
+            Shoot();
+        }
+
+        if (Input.GetKey(RightKey) && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
-        if (Input.GetKey(LeftKey) && forwardVelocity != 0 && !jumpPressed)
+        if (Input.GetKey(LeftKey) && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
 
         rigidbody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
+
+        if (positionList.Count > 100)
+        {
+            positionList.Dequeue();
+        }
+
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(this.transform.position, Vector3.down, 5f);
+
+        foreach (var item in hits)
+        {
+            if (item.collider.gameObject.tag == "Road")
+            {
+                positionList.Enqueue(this.transform.position);
+            }
+        }
+
+        if (this.transform.position.y < -1)
+        {
+            jumpPressed = true;
+            rigidbody.position = (Vector3)positionList.Dequeue();
+            rigidbody.position += Vector3.up*5;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+            rigidbody.rotation = Quaternion.identity;
+            forwardVelocity = 0;
+
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         jumpPressed = false;
+    }
+
+    private void Shoot()
+    {
+        Instantiate(Missile, this.transform.position + this.transform.forward * 3, this.transform.rotation);
     }
 }
 

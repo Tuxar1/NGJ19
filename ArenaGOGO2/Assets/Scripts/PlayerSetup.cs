@@ -18,6 +18,8 @@ public class PlayerSetup
 		public bool Joystick;
 	}
 
+	public static bool AllowInput = false;
+
 	private static Dictionary<int, PlayerData> playerID2InputData = new Dictionary<int, PlayerData>();
 
 	public static void ResetPlayers()
@@ -73,6 +75,7 @@ public class PlayerSetup
 		};
 		playerID2InputData[0] = player1Input;
 		playerID2InputData[1] = player2Input;
+		ScoreSystem.ResetScore();
 	}
 
 	public static Color GetColorFromPlayerID(int playerID)
@@ -82,6 +85,10 @@ public class PlayerSetup
 
 	public static bool GetPlayerJumpedForPlayerID(int playerID)
 	{
+		if (!AllowInput)
+		{
+			return false;
+		}
 		var pd = playerID2InputData[playerID];
 		if (pd.Joystick)
 		{
@@ -95,6 +102,10 @@ public class PlayerSetup
 
 	public static bool GetPlayerAttackedForPlayerID(int playerID)
 	{
+		if (!AllowInput)
+		{
+			return false;
+		}
 		var pd = playerID2InputData[playerID];
 		if (pd.Joystick)
 		{
@@ -108,8 +119,17 @@ public class PlayerSetup
 
 	public static float GetPlayerAxisForPlayerID(int playerID)
 	{
+		if (!AllowInput)
+		{
+			return 0f;
+		}
 		var pd = playerID2InputData[playerID];
 		return Input.GetAxis(pd.HorizontalAxisName);
+	}
+
+	public static bool GetAnyPressedStart()
+	{
+		return Input.GetButton("Start");
 	}
 
 	public static Tuple<int, Color>[] GetPlayerColors()
