@@ -128,14 +128,24 @@ public class CarController : MonoBehaviour
         {
             rotationList.Dequeue();
         }
-        rotationList.Enqueue(this.transform.position);
+
+        RaycastHit hit;
+        if(Physics.Raycast(new Ray(this.transform.position + Vector3.down, Vector3.down), out hit))
+        {
+            if(hit.collider.gameObject.tag == "Road")
+            {
+                rotationList.Enqueue(this.transform.position);
+            }
+        }
 
         if (this.transform.position.y < -5)
         {
+            jumpPressed = true;
             rigidbody.position = (Vector3)positionList.Dequeue();
             rigidbody.position += Vector3.up*5;
             positionList.Clear();
             rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
             rigidbody.rotation = Quaternion.identity;
             rotationList.Clear();
         }

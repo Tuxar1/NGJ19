@@ -15,14 +15,17 @@ public class RoadGeneration : MonoBehaviour
 
     public Vector2 StartPosition = Vector2.zero;
 
-    // Start is called before the first frame update
     void Start()
     {
+        SetupMap();
+    }
 
+    // Start is called before the first frame update
+    void SetupMap()
+    {
         GameObject creator = new GameObject();
         StartPosition = new Vector2(sizeX / 2, sizeX / 2);
         creator.transform.position = new Vector3(StartPosition.x, 0, StartPosition.y);
-
 
         for (int x = 0; x < sizeX; x++)
         {
@@ -42,7 +45,8 @@ public class RoadGeneration : MonoBehaviour
                 {
                     map[(int)creator.transform.position.x, (int)creator.transform.position.z] = true;
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    cube.transform.localScale = new Vector3(Scale, Scale, Scale);
+                    cube.transform.localScale = new Vector3(Scale, 1, Scale);
+                    cube.gameObject.tag = "Road";
                     cube.transform.position = new Vector3(creator.transform.position.x, -Scale / 2, creator.transform.position.z);
                 }
 
