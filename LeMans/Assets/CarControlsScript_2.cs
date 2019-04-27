@@ -12,20 +12,29 @@ public class AxleInfo
     public bool steering;
 }
 
-public class SimpleCarController : MonoBehaviour
+public class CarControlsScript_2 : MonoBehaviour
 {
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
-    private Rigidbody rigidbody;
-
     private float MAX_SPEED = 1.5f;
     private float SPEED = 0f;
     private float LERP_SPEED = 0.2f;
     private float rotationSpeed = 1;
     private Boolean isGrounded = true;
-
     private Vector3 carGrvity = new Vector3(0, -50, 0);
+    private Rigidbody rigidBody;
+    public PlayerKeysScript keysScript;
+
+    void Start()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        checkControls();
+    }
 
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -46,16 +55,6 @@ public class SimpleCarController : MonoBehaviour
         visualWheel.transform.rotation = rotation;
     }
 
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        checkControls();
-    }
-
     void OnCollisionEnter (Collision col)
     {
         isGrounded = true;//(col.gameObject.tag == GameTags.Tags.Ground.ToString());
@@ -66,9 +65,9 @@ public class SimpleCarController : MonoBehaviour
         if (isGrounded)
         {
             // JUMP
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (Input.GetKeyDown(keysScript.JumpKey) && isGrounded)
             {
-                rigidbody.AddForce(Vector3.up * 10000f, ForceMode.Impulse);
+                rigidBody.AddForce(Vector3.up * 10000f, ForceMode.Impulse);
                 isGrounded = false;
             }
 
@@ -77,11 +76,11 @@ public class SimpleCarController : MonoBehaviour
         }
         
         // ROTATE LEFT & RIGHT
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(keysScript.LeftKey))
         {
             transform.Rotate(Vector3.up, -rotationSpeed);
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(keysScript.RightKey))
         {
             transform.Rotate(Vector3.up, rotationSpeed);
         }
@@ -91,10 +90,9 @@ public class SimpleCarController : MonoBehaviour
     {
         if (isGrounded)
         {
-            Debug.Log("rigid speed: "+rigidbody.velocity);
             if (SPEED < 0.1 && SPEED > -0.1)
             {
-                rigidbody.AddForce( rigidbody.transform.forward * 200f, ForceMode.Impulse);
+                rigidBody.AddForce( rigidBody.transform.forward * 200f, ForceMode.Impulse);
             }
 
             if (isSpeedingForward())
@@ -118,19 +116,19 @@ public class SimpleCarController : MonoBehaviour
 
     private bool isSpeedingBackwards()
     {
-        return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        return Input.GetKey(keysScript.BrakeKey);
     }
 
     private bool isSpeedingForward()
     {
-        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        return Input.GetKey(keysScript.AccelerationKey);
     }
 
     private void applySpeed(float speed)
     {
         if (speed < MAX_SPEED && speed > -MAX_SPEED)
         {
-            rigidbody.AddForce( rigidbody.transform.forward * 200f * speed, ForceMode.Impulse);
+            rigidBody.AddForce( rigidBody.transform.forward * 200f * speed, ForceMode.Impulse);
         }
 
         //var target = Quaternion.LookRotation((transform.position + rigidbody.velocity) - this.transform.position);
@@ -146,8 +144,7 @@ public class SimpleCarController : MonoBehaviour
     private void updateGravity()
     { 
         Vector3 gravity = (carGrvity - Physics.gravity);
-        //Debug.Log( gravity  + ", " +rigidbody.mass);
-        rigidbody.AddForce( gravity * rigidbody.mass);
+        rigidBody.AddForce( gravity * rigidBody.mass);
     }
 
     private void updateSteering()
