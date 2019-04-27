@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public Action RestartAction;
     public Action AfterRestartAction;
 
+	public static bool GameHasStarted = false;
+	public float ContinuousRespawnTime = 5f;
+
     void Awake()
     {
         if (instance == null)
@@ -27,6 +30,7 @@ public class GameController : MonoBehaviour
 		PlayerSetup.SetUpDefaultIfNoData();
 		SetupSpawners();
 		SpawnPlayers();
+		GameHasStarted = true;
     }
 
     //Update is called every frame.
@@ -43,9 +47,7 @@ public class GameController : MonoBehaviour
         RestartAction();
         foreach (var player in playerSpawnPos.Keys)
         {
-            player.transform.position = playerSpawnPos[player];
-            player.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
-            player.SetActive(true);
+			ResetPlayer(player, 0);
         }
         AfterRestartAction();
     }
@@ -80,6 +82,19 @@ public class GameController : MonoBehaviour
 		var go = Instantiate(PlayerPrefab, spawn.transform.position, Quaternion.identity);
 		go.GetComponent<PlayerInput>().Setup(playerID, color);
 		playerSpawnPos[go] = spawn.transform.position;
+	}
+
+	public void PlayerDied(GameObject player)
+	{
+		StartCoroutine(ResetPlayer(player, ContinuousRespawnTime));
+	}
+
+	private IEnumerator ResetPlayer(GameObject playerGO, float time)
+	{
+		yield return new WaitForSeconds(time);
+		playerGO.transform.position = playerSpawnPos[playerGO];
+		playerGO.GetComponent<PlayerDeath>().ReclaimPSAndResetIt();
+		playerGO.SetActive(true);
 	}
 }
 

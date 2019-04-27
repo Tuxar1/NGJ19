@@ -172,6 +172,7 @@ public class MenuScene : MonoBehaviour
 				PlayerSetup.SetUpKeyboardPlayer(player.InputID, i, "Key" + player.InputID + HorizontalName, jumpKey, attackKey, player.SelectedColor);
 			}
 		}
+		ScoreSystem.ResetScore();
 		SceneManager.LoadScene(1);
 	}
 }
