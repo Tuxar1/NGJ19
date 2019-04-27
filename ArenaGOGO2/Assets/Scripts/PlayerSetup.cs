@@ -57,7 +57,6 @@ public class PlayerSetup
 		{
 			return;
 		}
-		Debug.Log("setup default");
 		var player1Input = new PlayerData
 		{
 			JumpKey = KeyCode.UpArrow,
@@ -86,11 +85,11 @@ public class PlayerSetup
 		var pd = playerID2InputData[playerID];
 		if (pd.Joystick)
 		{
-			return Input.GetButtonDown(pd.JumpButton);
+			return Input.GetButton(pd.JumpButton);
 		}
 		else
 		{
-			return Input.GetKeyDown(pd.JumpKey);
+			return Input.GetKey(pd.JumpKey);
 		}
 	}
 
