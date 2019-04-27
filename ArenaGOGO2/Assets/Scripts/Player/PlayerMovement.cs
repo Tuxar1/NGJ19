@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 	private float xInput = 0.0f;
 
 	public SpriteRenderer spriteRenderer;
+	public Animator Anim;
 
 	// Start is called before the first frame update
 	void Start()
@@ -107,6 +108,10 @@ public class PlayerMovement : MonoBehaviour
 					lastWallTime = time;
 				}
 			}
+		}
+		if (Anim.GetBool("InAir") == grounded)
+		{
+			Anim.SetBool("InAir", !grounded);
 		}
 	}
 
@@ -195,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
 
 		var newXVel = Mathf.MoveTowards(momentum.x, move, acceleration * Time.fixedDeltaTime);
 		Rigidbody.velocity = new Vector2(newXVel, momentum.y);
+		Anim.SetFloat("Speed", Mathf.Abs(Rigidbody.velocity.x));
 	}
 
 	void UpdateSprite()

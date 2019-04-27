@@ -22,6 +22,7 @@ public enum EnvironmentMods
     SpikesAreSafe,
     PlatformsInvisible,
     PlatformsDisappearing,
+    HardMode,
 }
 
 public class WinController : MonoBehaviour
@@ -33,7 +34,9 @@ public class WinController : MonoBehaviour
     public PlatformScript[] platforms;
     public int amountOfPlayersHitWin;
 
-    public Action<string> WinActions;
+    public GameObject hardModeHolder;
+
+    public Action<Color> WinActions;
 
     void Awake()
     {
@@ -50,12 +53,26 @@ public class WinController : MonoBehaviour
     {
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
+        GameController.instance.RestartAction = SetEnvironmentMods;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetEnvironmentMods()
+    {
+        switch(environmentMods)
+        {
+            case EnvironmentMods.HardMode:
+                hardModeHolder.SetActive(true);
+                break;
+            default:
+                hardModeHolder.SetActive(false);
+                break;
+        }
     }
 
     public void InitializeWinCondition()
@@ -74,7 +91,7 @@ public class WinController : MonoBehaviour
             case WinConditions.OneReachGoal:
                 if (asker.GetComponent<WinDoor>() != null)
                 {
-                    Win(playerGo);
+                    Win(playerGo, winCondition);
                 }
                 break;
             case WinConditions.AllReachGoal:
@@ -82,13 +99,13 @@ public class WinController : MonoBehaviour
                     amountOfPlayersHitWin++;
                 if (amountOfPlayersHitWin >= playerRefs.Length)
                 {
-                    Win();
+                    Win(winCondition);
                 }
                 break;
             case WinConditions.TouchAllPlatforms:
                 if (platforms.All(x => x.hasBeenTouched))
                 {
-                    Win();
+                    Win(winCondition);
                 }
                 break;
             case WinConditions.LastManStanding:
@@ -105,14 +122,21 @@ public class WinController : MonoBehaviour
         return null;
     }
 
-    public void Win()
+    public void Win(WinConditions winCondition)
     {
-        WinActions(null);
-    }
+		foreach (var player in playerRefs)
+		{
+			ScoreSystem.AwardPoints(player.GetComponent<PlayerInput>().PlayerID, winCondition);
+		}
+		WinActions(Color.white);
+	}
 
-    public void Win(GameObject player)
+	public void Win(GameObject player, WinConditions winCondition)
     {
-        WinActions(player.name);
-    }
+		var playerID = player.GetComponent<PlayerInput>().PlayerID;
+		ScoreSystem.AwardPoints(playerID, winCondition);
+		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);
+		WinActions(playerColor);
+	}
 
 }

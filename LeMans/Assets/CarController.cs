@@ -30,14 +30,14 @@ public class CarController : MonoBehaviour
     public PlayerID PlayerID = PlayerID.Player1;
     public GameObject Missile;
 
-    private Vector3 startPos;
-    private Quaternion starRotation;
+    private Queue positionList;
+    private Queue rotationList;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPos = this.transform.position;
-        starRotation = this.transform.rotation;
+        positionList = new Queue();
+        rotationList = new Queue();
         switch (PlayerID)
         {
             case PlayerID.Player1:
@@ -102,7 +102,7 @@ public class CarController : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(ShootKey) && !jumpPressed)
+        if (Input.GetKeyDown(ShootKey))
         {
             Shoot();
         }
@@ -118,10 +118,26 @@ public class CarController : MonoBehaviour
 
         rigidbody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
 
+        if (positionList.Count > 100)
+        {
+            positionList.Dequeue();
+        }
+        positionList.Enqueue(this.transform.position);
+
+        if (rotationList.Count > 100)
+        {
+            rotationList.Dequeue();
+        }
+        rotationList.Enqueue(this.transform.position);
+
         if (this.transform.position.y < -5)
         {
-            this.transform.position = startPos;
-            this.transform.rotation = starRotation;
+            rigidbody.position = (Vector3)positionList.Dequeue();
+            rigidbody.position += Vector3.up*5;
+            positionList.Clear();
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.rotation = Quaternion.identity;
+            rotationList.Clear();
         }
     }
 
