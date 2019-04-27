@@ -163,12 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950d42954b91d6c4d817f365be266ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurvePrefab: {fileID: -927199367670048503, guid: 2ba073156b913cf4cbdd96985a5c5644,
-    type: 3}
-  LinePrefab: {fileID: -927199367670048503, guid: abb8262fdcedaeb4c9d27bcf2e3c15b8,
-    type: 3}
+  Finish: {fileID: 4966575565107491815, guid: ac7c220e54c4bc745b9cb7282be1b08b, type: 3}
+  Scale: 10
   StartPosition: {x: 0, y: 0}
-  FinishPosition: {x: 0, y: 0}
 --- !u!1 &1633882163
 GameObject:
   m_ObjectHideFlags: 0
