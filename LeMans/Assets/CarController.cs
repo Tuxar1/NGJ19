@@ -122,19 +122,15 @@ public class CarController : MonoBehaviour
         {
             positionList.Dequeue();
         }
-        positionList.Enqueue(this.transform.position);
 
-        if (rotationList.Count > 100)
-        {
-            rotationList.Dequeue();
-        }
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(this.transform.position, Vector3.down, 5f);
 
-        RaycastHit hit;
-        if(Physics.Raycast(new Ray(this.transform.position + Vector3.down, Vector3.down), out hit))
+        foreach (var item in hits)
         {
-            if(hit.collider.gameObject.tag == "Road")
+            if (item.collider.gameObject.tag == "Road")
             {
-                rotationList.Enqueue(this.transform.position);
+                positionList.Enqueue(this.transform.position);
             }
         }
 
@@ -143,11 +139,12 @@ public class CarController : MonoBehaviour
             jumpPressed = true;
             rigidbody.position = (Vector3)positionList.Dequeue();
             rigidbody.position += Vector3.up*5;
-            positionList.Clear();
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.rotation = Quaternion.identity;
-            rotationList.Clear();
+            forwardVelocity = 0;
+
+
         }
     }
 
