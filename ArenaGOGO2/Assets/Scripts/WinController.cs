@@ -54,6 +54,7 @@ public class WinController : MonoBehaviour
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
         GameController.instance.RestartAction = SetEnvironmentMods;
+        SetEnvironmentMods();
     }
 
     // Update is called once per frame
@@ -103,7 +104,7 @@ public class WinController : MonoBehaviour
                 }
                 break;
             case WinConditions.TouchAllPlatforms:
-                if (platforms.All(x => x.hasBeenTouched))
+                if (platforms.Where(x => x.isActiveAndEnabled).All(x => x.hasBeenTouched))
                 {
                     Win(winCondition);
                 }
