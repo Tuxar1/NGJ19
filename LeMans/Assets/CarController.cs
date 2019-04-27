@@ -25,8 +25,10 @@ public class CarController : MonoBehaviour
     private KeyCode LeftKey;
     private KeyCode RightKey;
     private KeyCode JumpKey;
+    private KeyCode ShootKey;
 
     public PlayerID PlayerID = PlayerID.Player1;
+    public GameObject Missile;
 
     private Vector3 startPos;
     private Quaternion starRotation;
@@ -44,6 +46,7 @@ public class CarController : MonoBehaviour
                 LeftKey = KeyCode.LeftArrow;
                 RightKey = KeyCode.RightArrow;
                 JumpKey = KeyCode.Minus;
+                ShootKey = KeyCode.Period;
                 break;
 
             case PlayerID.Player2:
@@ -51,7 +54,8 @@ public class CarController : MonoBehaviour
                 BrakeKey = KeyCode.S;
                 LeftKey = KeyCode.A;
                 RightKey = KeyCode.D;
-                JumpKey = KeyCode.Space;
+                JumpKey = KeyCode.F;
+                ShootKey = KeyCode.G;
                 break;
         }
     }
@@ -97,6 +101,12 @@ public class CarController : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
         }
 
+        // Jump
+        if (Input.GetKeyDown(ShootKey) && !jumpPressed)
+        {
+            Shoot();
+        }
+
         if (Input.GetKey(RightKey) && forwardVelocity != 0 && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
@@ -108,7 +118,7 @@ public class CarController : MonoBehaviour
 
         rigidbody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
 
-        if(this.transform.position.y < -5)
+        if (this.transform.position.y < -5)
         {
             this.transform.position = startPos;
             this.transform.rotation = starRotation;
@@ -118,6 +128,11 @@ public class CarController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         jumpPressed = false;
+    }
+
+    private void Shoot()
+    {
+        Instantiate(Missile, this.transform.position + this.transform.forward * 3, this.transform.rotation);
     }
 }
 
