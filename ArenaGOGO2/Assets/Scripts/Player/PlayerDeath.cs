@@ -26,6 +26,7 @@ public class PlayerDeath : MonoBehaviour
         ps.Play();
         PlayerDeathActions();
         gameObject.SetActive(false);
+		GameController.instance.PlayerDied(gameObject);
     }
 
     public void ReclaimPSAndResetIt()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4177234451054835205}
   - component: {fileID: 4177234451054835206}
   - component: {fileID: 7308386645796448072}
+  - component: {fileID: 6920175373861893752}
   m_Layer: 9
   m_Name: SmallSpikeBlock
   m_TagString: Untagged
@@ -108,6 +109,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6920175373861893752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177234451054835204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bf0f5e51fa9814b90951d6f1df99f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTouched: 0
 --- !u!1001 &236031586338154595
 PrefabInstance:
   m_ObjectHideFlags: 0
