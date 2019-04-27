@@ -9,18 +9,6 @@ public class ArmToHitWith : MonoBehaviour
     public float HitDisplacement = 0.2f;
     public Transform Parent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
