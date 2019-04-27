@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinDoor : MonoBehaviour
+public class PlatformScript : MonoBehaviour
 {
+    public bool hasBeenTouched = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,11 @@ public class WinDoor : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
-            WinController.instance.CheckWinCondition(gameObject, col.gameObject);
+            hasBeenTouched = true;
         }
     }
 }
