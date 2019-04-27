@@ -54,7 +54,7 @@ public class WinController : MonoBehaviour
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
         new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.SpikesUnderYou),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
     };
     private int gamesModesIterator = 0;
 
