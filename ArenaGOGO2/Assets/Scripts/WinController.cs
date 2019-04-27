@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class WinController : MonoBehaviour
     public WinConditions winCondition;
     public static WinController instance = null;
     public GameObject[] playerRefs;
-    public List<PlatformScript> platforms;
+    public PlatformScript[] platforms;
     public int amountOfPlayersHitWin;
 
     public Action<string> WinActions;
@@ -48,6 +49,7 @@ public class WinController : MonoBehaviour
     void Start()
     {
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
+		platforms = GameObject.FindObjectsOfType<PlatformScript>();
     }
 
     // Update is called once per frame
@@ -63,6 +65,10 @@ public class WinController : MonoBehaviour
 
     public void CheckWinCondition(GameObject asker, GameObject playerGo)
     {
+		if (!GameController.GameHasStarted)
+		{
+			return;
+		}
         switch (winCondition)
         {
             case WinConditions.OneReachGoal:
@@ -80,7 +86,7 @@ public class WinController : MonoBehaviour
                 }
                 break;
             case WinConditions.TouchAllPlatforms:
-                if (platforms.TrueForAll(x => x.hasBeenTouched))
+                if (platforms.All(x => x.hasBeenTouched))
                 {
                     Win();
                 }
