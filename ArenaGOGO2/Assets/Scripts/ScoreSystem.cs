@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ScoreSystem
 {
+	public class ScoreData
+	{
+		public WinConditions Condition;
+		public Color Color;
+		public int PointsAwarded;
+	}
+
 	public static Dictionary<int, int> playerID2Score;
-
-
+	private static List<ScoreData> scoreData = new List<ScoreData>();
 
 	public static void ResetScore()
 	{
@@ -20,7 +26,15 @@ public class ScoreSystem
 
 	public static void AwardPoints(int playerID, WinConditions winCondition)
 	{
-		playerID2Score[playerID] += WinCondition2Points(winCondition);
+		var points = WinCondition2Points(winCondition);
+		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);
+		scoreData.Add(new ScoreData
+		{
+			Color = playerColor,
+			Condition = winCondition,
+			PointsAwarded = points,
+		});
+		playerID2Score[playerID] += points;
 	}
 
 	private static int WinCondition2Points(WinConditions winConditions)
@@ -38,8 +52,23 @@ public class ScoreSystem
 			case WinConditions.CaptureTheFlag:
 				return 1;
 			default:
-				Debug.Log("NYI");
+				Debug.LogError($"NYI: {winConditions}");
 				return 1;
 		}
+	}
+
+	public static int GetScoreFromPlayerID(int playerID)
+	{
+		return playerID2Score[playerID];
+	}
+
+	public static List<ScoreData> GetLatestAwardedPoints()
+	{
+		return scoreData;
+	}
+
+	public static void ClearScoreData()
+	{
+		scoreData = new List<ScoreData>();
 	}
 }
