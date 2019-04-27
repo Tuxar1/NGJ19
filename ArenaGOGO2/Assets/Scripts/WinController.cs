@@ -49,9 +49,11 @@ public class WinController : MonoBehaviour
     public GameObject hardModeHolder;
 
     public Action<Color> WinActions;
+    public PickupFlag Flag;
 
     private GameModes[] gameModes = {
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
         new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
@@ -77,6 +79,7 @@ public class WinController : MonoBehaviour
         GameController.instance.RestartAction += SetEnvironmentMods;
         PickNextGameMode();
         SetEnvironmentMods();
+        InitializeWinCondition();
     }
 
     // Update is called once per frame
@@ -120,6 +123,8 @@ public class WinController : MonoBehaviour
     public void InitializeWinCondition()
     {
         amountOfPlayersHitWin = 0;
+        if (winCondition == WinConditions.CaptureTheFlag)
+            Flag.StartCTF();
     }
 
     public void CheckWinCondition(GameObject asker, GameObject playerGo)
@@ -154,7 +159,7 @@ public class WinController : MonoBehaviour
 
                 break;
             case WinConditions.CaptureTheFlag:
-                
+                Win(playerGo, winCondition);
                 break;
         }
     }
