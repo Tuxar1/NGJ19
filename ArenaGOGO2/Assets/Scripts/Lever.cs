@@ -13,7 +13,7 @@ public class Lever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameController.instance.RestartAction += ResetLeverState;
     }
 
     // Update is called once per frame
@@ -48,6 +48,12 @@ public class Lever : MonoBehaviour
                 PinkDoor.SetActive(true);
                 break;
         }
+    }
+
+    private void ResetLeverState()
+    {
+        leverState = 3;
+        ChangeLeverState();
     }
 
 }

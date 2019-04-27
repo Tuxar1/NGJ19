@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,12 +24,27 @@ public enum EnvironmentMods
     PlatformsInvisible,
     PlatformsDisappearing,
     HardMode,
+	LowGravity,
+	HighGravity,
+	LerpingGravity,
+	HeavyWinds,
 }
 
 public class WinController : MonoBehaviour
 {
-    public EnvironmentMods environmentMods;
-    public WinConditions winCondition;
+    private class GameModes
+    {
+        public WinConditions winCondition;
+        public EnvironmentMods environmentMods;
+        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods)
+        {
+            this.winCondition = winCondition;
+            this.environmentMods = environmentMods;
+        }
+    }
+
+    private EnvironmentMods environmentMod;
+    public WinConditions winCondition { get; private set; }
     public static WinController instance = null;
     public GameObject[] playerRefs;
     public PlatformScript[] platforms;
@@ -38,6 +53,18 @@ public class WinController : MonoBehaviour
     public GameObject hardModeHolder;
 
     public Action<Color> WinActions;
+    public PickupFlag Flag;
+
+    private GameModes[] gameModes = {
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
+        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity),
+		new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.LerpingGravity),
+	};
+    private int gamesModesIterator = 0;
 
     void Awake()
     {
@@ -54,8 +81,11 @@ public class WinController : MonoBehaviour
     {
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
-        GameController.instance.RestartAction = SetEnvironmentMods;
+        GameController.instance.RestartAction += PickNextGameMode;
+        GameController.instance.RestartAction += SetEnvironmentMods;
+        PickNextGameMode();
         SetEnvironmentMods();
+        InitializeWinCondition();
     }
 
     // Update is called once per frame
@@ -66,7 +96,8 @@ public class WinController : MonoBehaviour
 
     public void SetEnvironmentMods()
     {
-        switch(environmentMods)
+		ResetEnvironmentMods();
+        switch(environmentMod)
         {
             case EnvironmentMods.HardMode:
                 hardModeHolder.SetActive(true);
@@ -79,15 +110,48 @@ public class WinController : MonoBehaviour
 				BombSpawner.SpawnBombs = true;
 				BombSpawner.GravityBombs = true;
 				break;
-            default:
-                hardModeHolder.SetActive(false);
+			case EnvironmentMods.LowGravity:
+				GravityController.mode = GravityController.GravityMode.Low;
+				break;
+			case EnvironmentMods.HighGravity:
+				GravityController.mode = GravityController.GravityMode.High;
+				break;
+			case EnvironmentMods.LerpingGravity:
+				GravityController.mode = GravityController.GravityMode.Pulsating;
+				break;
+			case EnvironmentMods.HeavyWinds:
+				GravityController.mode = GravityController.GravityMode.HeavyWinds;
+				break;
+			default:
                 break;
+        }
+    }
+
+	public void ResetEnvironmentMods()
+	{
+		hardModeHolder.SetActive(false);
+		BombSpawner.SpawnBombs = false;
+		BombSpawner.GravityBombs = false;
+		GravityController.mode = GravityController.GravityMode.Default;
+		Flag.ResetState();
+	}
+
+	public void PickNextGameMode()
+    {
+        winCondition = gameModes[gamesModesIterator].winCondition;
+        environmentMod = gameModes[gamesModesIterator].environmentMods;
+        gamesModesIterator++;
+        if (gamesModesIterator > gameModes.Length - 1)
+        {
+            gamesModesIterator = 0;
         }
     }
 
     public void InitializeWinCondition()
     {
         amountOfPlayersHitWin = 0;
+        if (winCondition == WinConditions.CaptureTheFlag)
+            Flag.StartCTF();
     }
 
     public void CheckWinCondition(GameObject asker, GameObject playerGo)
@@ -122,7 +186,7 @@ public class WinController : MonoBehaviour
 
                 break;
             case WinConditions.CaptureTheFlag:
-                
+                Win(playerGo, winCondition);
                 break;
         }
     }
