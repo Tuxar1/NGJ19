@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-	public float TimeBetweenSprites = 0.2f;
+	public float TimeBetweenSprites = 0.1f;
 	public Sprite[] Sprites;
 	public SpriteRenderer Renderer;
-	public CircleCollider2D collider;
+	public CircleCollider2D Collider2D;
 
 	private float timeSinceChange = 0;
 	private int spriteID = 0;
@@ -31,7 +31,7 @@ public class Explosion : MonoBehaviour
 				return;
 			}
 			Renderer.sprite = Sprites[spriteID];
-			collider.radius = colliderSizes[spriteID];
+			Collider2D.radius = colliderSizes[spriteID];
 		}
     }
 

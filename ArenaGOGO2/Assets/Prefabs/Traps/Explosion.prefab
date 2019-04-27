@@ -99,7 +99,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0d62e697a44d4d742b9b667a4b882c39, type: 3}
   - {fileID: 21300000, guid: a1ebc50a7f173a04d868e61c2f6579bd, type: 3}
   Renderer: {fileID: 9193772856790845641}
-  collider: {fileID: 7866914843603356658}
+  Collider2D: {fileID: 7866914843603356658}
 --- !u!58 &7866914843603356658
 CircleCollider2D:
   m_ObjectHideFlags: 0

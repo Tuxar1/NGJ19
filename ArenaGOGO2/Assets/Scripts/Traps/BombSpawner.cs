@@ -7,7 +7,7 @@ public class BombSpawner : MonoBehaviour
 	public static bool SpawnBombs = false;
 	public static bool GravityBombs = true;
 	public GameObject BombPrefab;
-	public float TimeBetweenBombs = 5f;
+	public float TimeBetweenBombs = 2.5f;
 
 	private Dictionary<GameObject, float> timeToBombForPlayer = new Dictionary<GameObject, float>();
 	private GameObject[] players;
