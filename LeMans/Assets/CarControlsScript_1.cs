@@ -90,11 +90,7 @@ public class CarControlsScript_1 : MonoBehaviour
 
         if (this.transform.position.y < -5)
         {
-            rigidBody.position = (Vector3)positionList.Dequeue();
-            rigidBody.position += Vector3.up*5;
             positionList.Clear();
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.rotation = Quaternion.identity;
             rotationList.Clear();
         }
     }

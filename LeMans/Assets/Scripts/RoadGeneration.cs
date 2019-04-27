@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadGeneration : MonoBehaviour
 {
     public GameObject Finish;
-    public GameObject Player1;
-    public GameObject Player2;
+    public PlayerKeysScript Player1;
+    public PlayerKeysScript Player2;
     public int Scale = 10;
 
     private static int sizeX = 1000;
@@ -14,16 +15,18 @@ public class RoadGeneration : MonoBehaviour
     private bool[,] map = new bool[sizeX, sizeY];
 
     public Vector2 StartPosition = Vector2.zero;
+    private GameObject creator;
 
     void Start()
     {
         SetupMap();
+        addPlayers();
     }
 
     // Start is called before the first frame update
     void SetupMap()
     {
-        GameObject creator = new GameObject();
+        creator = new GameObject();
         StartPosition = new Vector2(sizeX / 2, sizeX / 2);
         creator.transform.position = new Vector3(StartPosition.x, 0, StartPosition.y);
 
@@ -37,7 +40,6 @@ public class RoadGeneration : MonoBehaviour
         int currentDirection = 1;
         try
         {
-
             for (int i = 0; i < 100; i++)
             {
             
@@ -66,37 +68,29 @@ public class RoadGeneration : MonoBehaviour
                     creator.transform.position = creator.transform.position + creator.transform.forward * Scale;
                 }
 
-                currentDirection = Random.Range(0, 10);
+                currentDirection = UnityEngine.Random.Range(0, 10);
             }
-            var fin = Instantiate(Finish, new Vector3(creator.transform.position.x, 0, creator.transform.position.z), Quaternion.identity);
-            fin.transform.rotation = creator.transform.rotation;
-
-            var player1 = Instantiate(Player1, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
-            player1.transform.LookAt(fin.transform.position);
-            player1.transform.position -= player1.transform.right;
-
-            var player2 = Instantiate(Player2, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
-            player2.transform.LookAt(fin.transform.position);
-            player2.transform.position += player2.transform.right;
         }
         catch (System.Exception)
         {
-            var fin = Instantiate(Finish, new Vector3(creator.transform.position.x, 0, creator.transform.position.z), Quaternion.identity);
-            fin.transform.rotation = creator.transform.rotation;
-
-            var player1 = Instantiate(Player1, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
-            player1.transform.LookAt(fin.transform.position);
-            player1.transform.Translate(player1.transform.right);
-
-            var player2 = Instantiate(Player2, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
-            player2.transform.LookAt(fin.transform.position);
-            player2.transform.Translate(-player2.transform.right);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void addPlayers()
     {
-        
+        var fin = Instantiate(Finish, new Vector3(creator.transform.position.x, 0, creator.transform.position.z), Quaternion.identity);
+            fin.transform.rotation = creator.transform.rotation;
+
+        var player1 = Instantiate(Player1, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
+            player1.transform.LookAt(fin.transform.position);
+            player1.transform.position -= player1.transform.right;
+            player1.PlayerID = PlayerID.Player1;
+            player1.spawnPoint = StartPosition;
+
+        var player2 = Instantiate(Player2, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
+            player2.transform.LookAt(fin.transform.position);
+            player2.transform.position += player2.transform.right * 0.02f;
+            player2.PlayerID = PlayerID.Player2;
+            player2.spawnPoint = player2.transform.position;
     }
 }

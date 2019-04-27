@@ -90,11 +90,6 @@ public class CarControlsScript_2 : MonoBehaviour
     {
         if (isGrounded)
         {
-            if (SPEED < 0.1 && SPEED > -0.1)
-            {
-                rigidBody.AddForce( rigidBody.transform.forward * 200f, ForceMode.Impulse);
-            }
-
             if (isSpeedingForward())
             {
                 // SET SPEED FORWARD

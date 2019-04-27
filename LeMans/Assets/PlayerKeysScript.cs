@@ -18,6 +18,7 @@ public class PlayerKeysScript : MonoBehaviour
     [HideInInspector] public KeyCode RightKey;
     [HideInInspector] public KeyCode JumpKey;
     [HideInInspector] public KeyCode ShootKey;
+    [HideInInspector] public Vector3 spawnPoint;
 
     void Start()
     {
