@@ -4977,10 +4977,7 @@ MonoBehaviour:
   playerMovement: {fileID: 2261962552949243221}
   input: {fileID: 2758112665538628161}
   playerDeath: {fileID: 1457122309068781126}
-  Attack: {fileID: 7839784871684049599, guid: e0e3b3790b64eb2489b63f77136c4a27, type: 3}
-  Standard: {fileID: -4398183398628465896, guid: e0e3b3790b64eb2489b63f77136c4a27,
-    type: 3}
-  spriteRenderer: {fileID: 6800690096049356356}
+  Anim: {fileID: 9217261766355356338}
 --- !u!114 &2758112665538628161
 MonoBehaviour:
   m_ObjectHideFlags: 0
