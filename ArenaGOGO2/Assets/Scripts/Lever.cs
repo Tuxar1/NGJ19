@@ -27,7 +27,7 @@ public class Lever : MonoBehaviour
         leverState++;
         if (leverState > 2)
         {
-            leverState = 0;
+            leverState = 1;
         }
 
         switch(leverState)

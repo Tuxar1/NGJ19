@@ -52,7 +52,8 @@ public class GameController : MonoBehaviour
         }
         AfterRestartAction();
 		PlayerSetup.AllowInput = true;
-    }
+		GameHasStarted = true;
+	}
 
 	private void SetupSpawners()
 	{
