@@ -138,7 +138,7 @@ public class CarController : MonoBehaviour
             }
         }
 
-        if (this.transform.position.y < -5)
+        if (this.transform.position.y < -1)
         {
             jumpPressed = true;
             rigidbody.position = (Vector3)positionList.Dequeue();

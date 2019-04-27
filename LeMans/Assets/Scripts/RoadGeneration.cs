@@ -47,7 +47,7 @@ public class RoadGeneration : MonoBehaviour
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.transform.localScale = new Vector3(Scale, 1, Scale);
                     cube.gameObject.tag = "Road";
-                    cube.transform.position = new Vector3(creator.transform.position.x, -Scale / 2, creator.transform.position.z);
+                    cube.transform.position = new Vector3(creator.transform.position.x, 0, creator.transform.position.z);
                 }
 
                 //Up
