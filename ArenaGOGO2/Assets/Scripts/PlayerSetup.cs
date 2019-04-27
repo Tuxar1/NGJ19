@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerSetup
@@ -104,5 +106,10 @@ public class PlayerSetup
 	{
 		var pd = playerID2InputData[playerID];
 		return Input.GetAxis(pd.HorizontalAxisName);
+	}
+
+	public static Tuple<int, Color>[] GetPlayerColors()
+	{
+		return playerID2InputData.Select(pd => new Tuple<int, Color>(pd.Key, pd.Value.PlayerColor)).ToArray();
 	}
 }
