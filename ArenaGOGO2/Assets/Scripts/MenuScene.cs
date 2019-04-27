@@ -46,7 +46,9 @@ public class MenuScene : MonoBehaviour
 	void Start()
     {
 		joinedPlayers = new JoinedPlayer[MaxPlayers];
-    }
+		var random = new System.Random();
+		SelectableColors = SelectableColors.OrderBy(x => random.Next()).ToArray();
+	}
 
     // Update is called once per frame
     void Update()
