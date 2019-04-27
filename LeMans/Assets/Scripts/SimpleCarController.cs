@@ -16,6 +16,7 @@ public class SimpleCarController : MonoBehaviour
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    private Rigidbody rigidbody;
 
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -36,8 +37,23 @@ public class SimpleCarController : MonoBehaviour
         visualWheel.transform.rotation = rotation;
     }
 
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("asdasd");
+            rigidbody.AddForce(Vector3.up * 2000f, ForceMode.Impulse);
+        }
+    }
+
     public void FixedUpdate()
     {
+
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
