@@ -27,13 +27,17 @@ public class PickupFlag : MonoBehaviour
     {
         RemoveDropFlagOnDeath();
         gameObject.transform.SetParent(null);
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-        isPickedUp = false;
+		if (rigidBody != null)
+		{
+			rigidBody.constraints = RigidbodyConstraints2D.None;
+			rigidBody.isKinematic = false;
+
+		}
+		isPickedUp = false;
         gameObject.transform.position = spawnPoint.position;
         EndZone.SetActive(false);
         gameObject.SetActive(false);
         DontFallcollider.enabled = true;
-        rigidBody.isKinematic = false;
     }
 
     public void StartCTF()
@@ -73,6 +77,9 @@ public class PickupFlag : MonoBehaviour
 
     private void RemoveDropFlagOnDeath()
     {
-        gameObject.transform.parent.GetComponent<PlayerDeath>().PlayerDeathActions -= DropFlagOnDeath;
+		if (gameObject.transform?.parent != null)
+		{
+			gameObject.transform.parent.GetComponent<PlayerDeath>().PlayerDeathActions -= DropFlagOnDeath;
+		}
     }
 }

@@ -56,13 +56,13 @@ public class WinController : MonoBehaviour
     public PickupFlag Flag;
 
     private GameModes[] gameModes = {
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.BombsUnderYouWithGravity),
         new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
         new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity),
-		new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.LerpingGravity),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity),
 	};
     private int gamesModesIterator = 0;
 
