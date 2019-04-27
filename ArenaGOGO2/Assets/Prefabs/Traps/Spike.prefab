@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8980332595070533587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spike
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -43,11 +43,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SingleSpikeUnit
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120318120425081452, guid: 7b0498e7c283fe141ac10051c3b833e7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Trap
       objectReference: {fileID: 0}
     - target: {fileID: 4120318120425081455, guid: 7b0498e7c283fe141ac10051c3b833e7,
         type: 3}
@@ -123,11 +118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SingleSpikeUnit (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120318120425081452, guid: 7b0498e7c283fe141ac10051c3b833e7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Trap
       objectReference: {fileID: 0}
     - target: {fileID: 4120318120425081455, guid: 7b0498e7c283fe141ac10051c3b833e7,
         type: 3}
