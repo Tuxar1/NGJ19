@@ -1600,20 +1600,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -4827511801016181753, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: 1070349670289211465, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: 7484199515805621294, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: 5085154839623231921, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: -2916710792997364810, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: -4224684587835915613, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
-    - sprite: {fileID: -9217634292923924296, guid: 021718f91ab5e314281805094df28171,
-        type: 3}
+    - sprite: {fileID: 21300000, guid: 5d4f3e424c1ceb449997998b683f8278, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4900,7 +4887,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5998797548565674896, guid: 01b6c68af4dde894b87e601346b5a818,
+  m_Sprite: {fileID: 7739146461591056979, guid: b3e74bae7431d0449b19615ee24119d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4936,7 +4923,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1}
+  m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &6800690096049356354
 Rigidbody2D:
