@@ -54,6 +54,8 @@ public class WinController : MonoBehaviour
 
     public GameObject hardModeHolder;
 
+	public UIController UIController;
+
     public Action<Color> WinActions;
     public PickupFlag Flag;
 
@@ -85,7 +87,8 @@ public class WinController : MonoBehaviour
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
         GameController.instance.RestartAction += PickNextGameMode;
         GameController.instance.RestartAction += SetEnvironmentMods;
-        PickNextGameMode();
+		GameController.instance.RestartAction += InitializeWinCondition;
+		PickNextGameMode();
         SetEnvironmentMods();
         InitializeWinCondition();
     }
@@ -136,12 +139,17 @@ public class WinController : MonoBehaviour
 		BombSpawner.GravityBombs = false;
 		GravityController.mode = GravityController.GravityMode.Default;
 		Flag.ResetState();
+		foreach (var platform in platforms)
+		{
+			platform.Reset();
+		}
 	}
 
 	public void PickNextGameMode()
     {
         winCondition = gameModes[gamesModesIterator].winCondition;
         environmentMod = gameModes[gamesModesIterator].environmentMods;
+		UIController.GameModeName(gameModes[gamesModesIterator].name);
         gamesModesIterator++;
         if (gamesModesIterator > gameModes.Length - 1)
         {
@@ -188,8 +196,11 @@ public class WinController : MonoBehaviour
 
                 break;
             case WinConditions.CaptureTheFlag:
-                Win(playerGo, winCondition);
-                break;
+				if (asker.tag == "Flag")
+				{
+					Win(playerGo, winCondition);
+				}
+				break;
         }
     }
 
@@ -200,6 +211,7 @@ public class WinController : MonoBehaviour
 
     public void Win(WinConditions winCondition)
     {
+		GameController.GameHasStarted = false;
 		foreach (var player in playerRefs)
 		{
 			ScoreSystem.AwardPoints(player.GetComponent<PlayerInput>().PlayerID, winCondition);
@@ -209,6 +221,7 @@ public class WinController : MonoBehaviour
 
 	public void Win(GameObject player, WinConditions winCondition)
     {
+		GameController.GameHasStarted = false;
 		var playerID = player.GetComponent<PlayerInput>().PlayerID;
 		ScoreSystem.AwardPoints(playerID, winCondition);
 		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);

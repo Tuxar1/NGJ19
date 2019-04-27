@@ -71,7 +71,6 @@ public class UIController : MonoBehaviour
 		{
 			playerScore.gameObject.SetActive(false);
 		}
-        WinText.text = "";
 		Panel.SetActive(false);
 		StartText.SetActive(false);
 		showing = false;

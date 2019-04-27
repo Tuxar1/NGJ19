@@ -18,7 +18,7 @@ public class GravityController : MonoBehaviour
 
 	private static Vector2 Default = new Vector2(0, -20);
 	private static Vector2 Low = new Vector2(0, -5);
-	private static Vector2 High = new Vector2(0, -100);
+	private static Vector2 High = new Vector2(0, -70);
 	private static Vector2 Winds = new Vector2(7.5f, -20);
 	private GravityMode activeMode = GravityMode.Default;
 
@@ -35,7 +35,7 @@ public class GravityController : MonoBehaviour
 		}
 		if (activeMode == GravityMode.Pulsating)
 		{
-			var newYGrav = Mathf.Lerp(Low.y, High.y, Mathf.PingPong(Time.time, 15) / 15);
+			var newYGrav = Mathf.Lerp(Low.y, High.y, Mathf.PingPong(Time.time, 10) / 10);
 			Physics2D.gravity = new Vector2(Physics2D.gravity.x, newYGrav);
 		}
 		if (activeMode == GravityMode.Rotatiting)
