@@ -25,7 +25,7 @@ public class PlatformScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            print(col);
+            // print(col);
             hasBeenTouched = true;
             if (isPlatformWin)
             {
@@ -37,7 +37,7 @@ public class PlatformScript : MonoBehaviour
 
     public void CheckWinCondition()
     {
-        print(WinController.instance.winCondition);
+        // print(WinController.instance.winCondition);
         if (WinConditions.TouchAllPlatforms == WinController.instance.winCondition)
         {
             isPlatformWin = true;
