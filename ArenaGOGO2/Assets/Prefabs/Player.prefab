@@ -149,7 +149,7 @@ MonoBehaviour:
   ArmSwingObject: {fileID: 6213883561204091539}
   SwingCooldown: 0.2
   SwingTime: 0.2
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 2261962552949243221}
   input: {fileID: 2758112665538628161}
   playerDeath: {fileID: 1457122309068781126}
   Attack: {fileID: 8135912888235980479, guid: 1d3a5c312a70e2a488980ac1961bf595, type: 3}
@@ -269,11 +269,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6031912520358886337, guid: cf98fce774b692a42b87038fd75b6918,
-        type: 3}
-      propertyPath: SwingForce.x
-      value: 750
-      objectReference: {fileID: 0}
     - target: {fileID: 5353512335247221978, guid: cf98fce774b692a42b87038fd75b6918,
         type: 3}
       propertyPath: m_Enabled
@@ -283,6 +278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031912520358886337, guid: cf98fce774b692a42b87038fd75b6918,
+        type: 3}
+      propertyPath: SwingForce.x
+      value: 750
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf98fce774b692a42b87038fd75b6918, type: 3}

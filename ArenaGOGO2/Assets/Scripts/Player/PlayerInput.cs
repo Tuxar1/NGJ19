@@ -19,12 +19,12 @@ public class PlayerInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.GetKeyDown(PlayerSetup.GetJumpKeyForPlayer(PlayerID)))
+        if (PlayerSetup.GetPlayerJumpedForPlayerID(PlayerID))
 		{
 			JumpChanged(true);
 		}
-		XAxis(Input.GetAxis(PlayerSetup.GetAxisNameForPlayer(PlayerID)));
-		if (Input.GetKeyDown(PlayerSetup.GetAttackKeyForPlayer(PlayerID)))
+		XAxis(PlayerSetup.GetPlayerAxisForPlayerID(PlayerID));
+		if (PlayerSetup.GetPlayerAttackedForPlayerID(PlayerID))
 		{
 			AttackClicked(true);
 		}
