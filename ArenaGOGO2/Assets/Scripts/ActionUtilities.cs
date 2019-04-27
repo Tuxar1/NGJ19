@@ -28,5 +28,16 @@ namespace Assets.Scripts
                     throw new NotImplementedException();
             }
         }
-    }
+
+		public static Action<PlayerDeath> GetBombAction()
+		{
+			switch (GameController.instance.spikeAction)
+			{
+				case SpikeAction.KillPlayer:
+					return KillPlayer;
+				default:
+					throw new NotImplementedException();
+			}
+		}
+	}
 }
