@@ -36,10 +36,12 @@ public class WinController : MonoBehaviour
     {
         public WinConditions winCondition;
         public EnvironmentMods environmentMods;
-        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods)
+		public string name;
+        public GameModes(WinConditions winCondition, EnvironmentMods environmentMods, string name)
         {
             this.winCondition = winCondition;
             this.environmentMods = environmentMods;
+			this.name = name;
         }
     }
 
@@ -56,13 +58,13 @@ public class WinController : MonoBehaviour
     public PickupFlag Flag;
 
     private GameModes[] gameModes = {
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.BombsUnderYouWithGravity),
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode),
-        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou),
-		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity),
-		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
+        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard, ""),
+        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity, "The moon"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity, "???"),
 	};
     private int gamesModesIterator = 0;
 
