@@ -73,8 +73,8 @@ ParticleSystemRenderer:
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0.01
-  m_MaxParticleSize: 0.01
+  m_MinParticleSize: 0.006
+  m_MaxParticleSize: 0.006
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -729,7 +729,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 0.3, y: 0.5, z: 0.1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4977,10 +4977,7 @@ MonoBehaviour:
   playerMovement: {fileID: 2261962552949243221}
   input: {fileID: 2758112665538628161}
   playerDeath: {fileID: 1457122309068781126}
-  Attack: {fileID: 7839784871684049599, guid: e0e3b3790b64eb2489b63f77136c4a27, type: 3}
-  Standard: {fileID: -4398183398628465896, guid: e0e3b3790b64eb2489b63f77136c4a27,
-    type: 3}
-  spriteRenderer: {fileID: 6800690096049356356}
+  Anim: {fileID: 9217261766355356338}
 --- !u!114 &2758112665538628161
 MonoBehaviour:
   m_ObjectHideFlags: 0

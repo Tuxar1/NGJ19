@@ -22,6 +22,7 @@ public enum EnvironmentMods
     SpikesAreSafe,
     PlatformsInvisible,
     PlatformsDisappearing,
+    HardMode,
 }
 
 public class WinController : MonoBehaviour
@@ -32,6 +33,8 @@ public class WinController : MonoBehaviour
     public GameObject[] playerRefs;
     public PlatformScript[] platforms;
     public int amountOfPlayersHitWin;
+
+    public GameObject hardModeHolder;
 
     public Action<Color> WinActions;
 
@@ -50,12 +53,26 @@ public class WinController : MonoBehaviour
     {
         playerRefs = GameObject.FindGameObjectsWithTag("Player");
 		platforms = GameObject.FindObjectsOfType<PlatformScript>();
+        GameController.instance.RestartAction = SetEnvironmentMods;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetEnvironmentMods()
+    {
+        switch(environmentMods)
+        {
+            case EnvironmentMods.HardMode:
+                hardModeHolder.SetActive(true);
+                break;
+            default:
+                hardModeHolder.SetActive(false);
+                break;
+        }
     }
 
     public void InitializeWinCondition()
