@@ -5022,8 +5022,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundSpeed: 10
   AirSpeed: 8
-  GroundJumpSpeed: 15
-  WallJumpSpeed: 15
+  GroundJumpSpeed: 10
+  WallJumpSpeed: 12
   FacingDirection: {x: -1, y: 0, z: 0}
   Rigidbody: {fileID: 6800690096049356354}
   input: {fileID: 2758112665538628161}
