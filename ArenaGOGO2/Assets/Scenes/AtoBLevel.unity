@@ -347,6 +347,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6229862947317856755, guid: 68af55ad0ba8277479cb4c1386357007,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229862945629250552, guid: 68af55ad0ba8277479cb4c1386357007,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229862946601069113, guid: 68af55ad0ba8277479cb4c1386357007,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 5205593036723135222, guid: 68af55ad0ba8277479cb4c1386357007,
         type: 3}
       propertyPath: m_TagString
@@ -357,30 +372,15 @@ PrefabInstance:
       propertyPath: PlayerID
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6229862945629250552, guid: 68af55ad0ba8277479cb4c1386357007,
-        type: 3}
-      propertyPath: m_TagString
-      value: Spawner
-      objectReference: {fileID: 0}
     - target: {fileID: 3571724112065564748, guid: 68af55ad0ba8277479cb4c1386357007,
         type: 3}
       propertyPath: PlayerID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6229862946601069113, guid: 68af55ad0ba8277479cb4c1386357007,
-        type: 3}
-      propertyPath: m_TagString
-      value: Spawner
-      objectReference: {fileID: 0}
     - target: {fileID: 3571724111359138189, guid: 68af55ad0ba8277479cb4c1386357007,
         type: 3}
       propertyPath: PlayerID
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229862947317856755, guid: 68af55ad0ba8277479cb4c1386357007,
-        type: 3}
-      propertyPath: m_TagString
-      value: Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 3571724110347864647, guid: 68af55ad0ba8277479cb4c1386357007,
         type: 3}

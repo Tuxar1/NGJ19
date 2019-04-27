@@ -4901,7 +4901,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7613046226729210796, guid: 1d3a5c312a70e2a488980ac1961bf595,
+  m_Sprite: {fileID: -4398183398628465896, guid: e0e3b3790b64eb2489b63f77136c4a27,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4978,8 +4978,8 @@ MonoBehaviour:
   playerMovement: {fileID: 2261962552949243221}
   input: {fileID: 2758112665538628161}
   playerDeath: {fileID: 1457122309068781126}
-  Attack: {fileID: 8135912888235980479, guid: 1d3a5c312a70e2a488980ac1961bf595, type: 3}
-  Standard: {fileID: -7613046226729210796, guid: 1d3a5c312a70e2a488980ac1961bf595,
+  Attack: {fileID: 7839784871684049599, guid: e0e3b3790b64eb2489b63f77136c4a27, type: 3}
+  Standard: {fileID: -4398183398628465896, guid: e0e3b3790b64eb2489b63f77136c4a27,
     type: 3}
   spriteRenderer: {fileID: 6800690096049356356}
 --- !u!114 &2758112665538628161

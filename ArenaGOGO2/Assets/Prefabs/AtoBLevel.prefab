@@ -6333,7 +6333,7 @@ PrefabInstance:
     - target: {fileID: 6118561919100410500, guid: c2304317a475c1d46aa980f6ecbf7933,
         type: 3}
       propertyPath: m_Name
-      value: Block (61)
+      value: Windoor
       objectReference: {fileID: 0}
     - target: {fileID: 6118561919100410501, guid: c2304317a475c1d46aa980f6ecbf7933,
         type: 3}

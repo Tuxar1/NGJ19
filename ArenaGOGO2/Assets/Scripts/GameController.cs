@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public static GameController instance = null;
     private SpawnPoint[] Spawners;
     private Dictionary<GameObject, Vector3> playerSpawnPos = new Dictionary<GameObject, Vector3>();
+    public Action RestartAction;
 
     void Awake()
     {
