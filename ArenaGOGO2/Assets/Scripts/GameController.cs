@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
 		SetupSpawners();
 		SpawnPlayers();
 		GameHasStarted = true;
+		PlayerSetup.AllowInput = true;
     }
 
     //Update is called every frame.
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
 			ResetPlayer(player, 0);
         }
         AfterRestartAction();
+		PlayerSetup.AllowInput = true;
     }
 
 	private void SetupSpawners()
