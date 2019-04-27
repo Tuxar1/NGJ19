@@ -69,11 +69,11 @@ public class RoadGeneration : MonoBehaviour
 
             var player1 = Instantiate(Player1, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
             player1.transform.LookAt(fin.transform.position);
-            player1.transform.Translate(player1.transform.right);
+            player1.transform.position -= player1.transform.right;
 
             var player2 = Instantiate(Player2, new Vector3(StartPosition.x, 1, StartPosition.y), Quaternion.identity);
             player2.transform.LookAt(fin.transform.position);
-            player2.transform.Translate(-player2.transform.right);
+            player2.transform.position += player2.transform.right;
         }
         catch (System.Exception)
         {
