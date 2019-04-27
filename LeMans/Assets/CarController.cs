@@ -107,11 +107,11 @@ public class CarController : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKey(RightKey) && forwardVelocity != 0 && !jumpPressed)
+        if (Input.GetKey(RightKey) && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
-        if (Input.GetKey(LeftKey) && forwardVelocity != 0 && !jumpPressed)
+        if (Input.GetKey(LeftKey) && !jumpPressed)
         {
             rigidbody.MoveRotation(Quaternion.Euler(rigidbody.rotation.eulerAngles.x, rigidbody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidbody.rotation.eulerAngles.x));
         }
