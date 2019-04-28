@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenTouched: 0
+  IsInDeadlySequence: 0

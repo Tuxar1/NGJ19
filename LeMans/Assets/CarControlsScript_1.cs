@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarControlsScript_1 : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CarControlsScript_1 : MonoBehaviour
     private float brakeForce = 0.05f;
     private float maxSpeed = 0.25f;
     private bool jumpPressed;
+    private bool glidePressed;
 
     public GameObject CarModel;
     private Queue positionList;
@@ -19,18 +21,33 @@ public class CarControlsScript_1 : MonoBehaviour
     private Rigidbody rigidBody;
     public GameObject playAuidoAndDestroy;
     public AudioClip sfxBoing;
+    private float countDown = 5f;
+
+
+    private Text text;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        
         positionList = new Queue();
         rotationList = new Queue();
-    }
+        text = GameObject.Find("Text").GetComponent<Text>();
+        Camera.main.rect = new Rect(Camera.main.rect.x, keysScript.CameraPos, Camera.main.rect.width, Camera.main.rect.height);
+    }   
     
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (countDown > 1)
+        {
+            countDown -= Time.deltaTime;
+            int seconds = (int)countDown % 60;
+            text.text = seconds.ToString();
+            return;
+        }
+        text.text = "";
+
         // Forward speed
         var target = this.transform.position;
         if (Input.GetKey(keysScript.AccelerationKey) && forwardVelocity < maxSpeed && !jumpPressed)
@@ -58,13 +75,14 @@ public class CarControlsScript_1 : MonoBehaviour
             forwardVelocity = 0;
         }
 
+
         target += this.transform.forward * forwardVelocity;
 
         if (Input.GetKey(keysScript.RightKey) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
-        if (Input.GetKey(keysScript.LeftKey) && !jumpPressed)
+        else if (Input.GetKey(keysScript.LeftKey) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
@@ -109,6 +127,11 @@ public class CarControlsScript_1 : MonoBehaviour
             GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
             gObbj.GetComponent<PlayAudioAndDestroy>().PlayClip(sfxBoing, true, 1);
         }
+        //Glide
+        else if (Input.GetKey(keysScript.JumpKey) && jumpPressed)
+        {
+            rigidBody.AddForce(Vector3.up * 3f, ForceMode.Acceleration);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -116,3 +139,4 @@ public class CarControlsScript_1 : MonoBehaviour
         jumpPressed = false;
     }
 }
+   
