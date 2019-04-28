@@ -35,10 +35,10 @@ public class CarControlsScript_1 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Application.LoadLevel(Application.loadedLevel);
+        //}
 
         if (countDown > 1)
         {
@@ -97,6 +97,7 @@ public class CarControlsScript_1 : MonoBehaviour
         {
             keysScript.isFlaggedForReset = false;
 
+            rigidBody.rotation = Quaternion.identity;
             rigidBody.velocity = Vector3.zero;
             forwardVelocity = 0f;
         }
@@ -120,6 +121,9 @@ public class CarControlsScript_1 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        jumpPressed = false;
+        if (collision.collider.gameObject.tag == "Road")
+        {
+            jumpPressed = false;
+        }
     }
 }

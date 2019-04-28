@@ -12,7 +12,7 @@ public class MissileScript : MonoBehaviour
 
     public int missileLifspan = 100;
 
-    private void Start() 
+    private void Start()
     {
         // PLAY SOUND
         GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
@@ -21,14 +21,14 @@ public class MissileScript : MonoBehaviour
 
     void Update()
     {
-        this.transform.position += this.transform.forward * 0.5f;
+        this.transform.position += this.transform.forward * 0.75f;
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         if (missileLifspan > 0)
         {
-            missileLifspan--;   
+            missileLifspan--;
         }
         else
         {
@@ -36,21 +36,21 @@ public class MissileScript : MonoBehaviour
             Destroy(transform.gameObject);
 
             // PFX: Explosion
-            showExplosion( transform );
+            showExplosion(transform);
         }
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision other)
     {
         Rigidbody rigidBody = other.gameObject.GetComponent<Rigidbody>();
         if (rigidBody)
         {
             // APPLY FORCE UPWARDS ON TARGET
-            rigidBody.AddForce( Vector3.up * 10f, ForceMode.Impulse);
+            rigidBody.AddForce(Vector3.up * 10f, ForceMode.Impulse);
             rigidBody.AddForce(transform.forward * 3f, ForceMode.Impulse);
 
             // PFX: Explosion
-            showExplosion( other.gameObject.transform );
+            showExplosion(other.gameObject.transform);
 
             // PLAY SOUND
             GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
@@ -63,7 +63,7 @@ public class MissileScript : MonoBehaviour
         }
     }
 
-    private void showExplosion( Transform originTransform )
+    private void showExplosion(Transform originTransform)
     {
         // PLAY PFX
         GameObject explo = Instantiate(explosion) as GameObject;

@@ -26,7 +26,7 @@ public class RunningScoreScript : MonoBehaviour
         textPlayer1Score.text = "" + player1Score;
         textPlayer2Score.text = "" + player2Score;
     }
-    
+
     public void givePlayer1Points()
     {
         player1Score++;
@@ -49,8 +49,8 @@ public class RunningScoreScript : MonoBehaviour
         {
             winTitleGameObject.SetActive(true);
 
-            if (player1Score == winScore) winTitle.text = "Top Won";
-            if (player2Score == winScore) winTitle.text = "Bottom Won";
+            if (player1Score == winScore) winTitle.text = "Bottom Won";
+            if (player2Score == winScore) winTitle.text = "Top Won";
 
             StartCoroutine(disableWinTitle());
         }
@@ -62,6 +62,9 @@ public class RunningScoreScript : MonoBehaviour
 
     IEnumerator disableWinTitle()
     {
+        var fireworks = FindObjectOfType<FireworksStart>();
+        fireworks.SetGameWon();
+
         yield return new WaitForSeconds(5.0f);
         winTitleGameObject.SetActive(false);
         Application.LoadLevel(0);
