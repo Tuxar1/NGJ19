@@ -48,7 +48,7 @@ public class RoadGeneration : MonoBehaviour
         int currentDirection = 1;
         try
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 20; i++)
             {
             
                 if (map[(int)creator.transform.position.x, (int)creator.transform.position.z] == false)
