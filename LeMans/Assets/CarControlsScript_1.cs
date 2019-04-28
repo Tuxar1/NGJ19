@@ -15,8 +15,6 @@ public class CarControlsScript_1 : MonoBehaviour
     private bool glidePressed;
 
     public GameObject CarModel;
-    private Queue positionList;
-    private Queue rotationList;
     public PlayerKeysScript keysScript;
     private Rigidbody rigidBody;
     public GameObject playAuidoAndDestroy;
@@ -29,8 +27,6 @@ public class CarControlsScript_1 : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        positionList = new Queue();
-        rotationList = new Queue();
         text = GameObject.Find("Text").GetComponent<Text>();
         Camera.main.rect = new Rect(Camera.main.rect.x, keysScript.CameraPos, Camera.main.rect.width, Camera.main.rect.height);
     }   
@@ -88,24 +84,6 @@ public class CarControlsScript_1 : MonoBehaviour
         }
 
         rigidBody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
-
-        if (positionList.Count > 100)
-        {
-            positionList.Dequeue();
-        }
-        positionList.Enqueue(this.transform.position);
-
-        if (rotationList.Count > 100)
-        {
-            rotationList.Dequeue();
-        }
-        rotationList.Enqueue(this.transform.position);
-
-        if (this.transform.position.y < -5)
-        {
-            positionList.Clear();
-            rotationList.Clear();
-        }
     }
 
     public void Update()
@@ -115,6 +93,7 @@ public class CarControlsScript_1 : MonoBehaviour
             keysScript.isFlaggedForReset = false;
 
             rigidBody.velocity = Vector3.zero;
+            forwardVelocity = 0f;
         }
 
         // Jump

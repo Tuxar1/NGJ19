@@ -9,18 +9,43 @@ public class PlayerFallOfMapScript : MonoBehaviour
     public AudioClip audioClip_Fallover;
     private Rigidbody rigidBody;
     public GameObject playAuidoAndDestroy;
+    private Queue positionList;
+    private Queue rotationList;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        positionList = new Queue();
+        rotationList = new Queue();
     }
 
     void Update()
     {
+        RaycastHit[] hits = Physics.RaycastAll(new Ray(this.transform.position, Vector3.down));
+
+        if (positionList.Count > 5)
+        {
+            positionList.Dequeue();
+        }
+
+        if (rotationList.Count > 5)
+        {
+            rotationList.Dequeue();
+        }
+
+        foreach (var hit in hits)
+        {
+            if(hit.collider.tag == "Road")
+            {
+                positionList.Enqueue(this.transform.position);
+                rotationList.Enqueue(this.transform.rotation);
+            }
+        }
+
         if (this.transform.position.y < -5)
         {
-            transform.position = playerKeysScript.spawnPoint;
-            transform.rotation = Quaternion.identity;
+            transform.position = (Vector3) positionList.Dequeue();
+            transform.rotation = (Quaternion) rotationList.Dequeue();
 
             playerKeysScript.isFlaggedForReset = true;
 
