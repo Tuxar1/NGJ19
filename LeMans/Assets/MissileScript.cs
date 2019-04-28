@@ -47,6 +47,7 @@ public class MissileScript : MonoBehaviour
         {
             // APPLY FORCE UPWARDS ON TARGET
             rigidBody.AddForce( Vector3.up * 10f, ForceMode.Impulse);
+            rigidBody.AddForce(rigidBody.transform.right * 3f, ForceMode.Impulse);
 
             // PFX: Explosion
             showExplosion( other.gameObject.transform );
