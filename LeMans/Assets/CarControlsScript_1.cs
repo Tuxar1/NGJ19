@@ -21,7 +21,6 @@ public class CarControlsScript_1 : MonoBehaviour
     private Rigidbody rigidBody;
     public GameObject playAuidoAndDestroy;
     public AudioClip sfxBoing;
-    private float countDown = 5f;
 
     private Text text;
 
@@ -37,15 +36,6 @@ public class CarControlsScript_1 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (countDown > 1)
-        {
-            countDown -= Time.deltaTime;
-            int seconds = (int) countDown % 60;
-
-            text.text = seconds.ToString();
-            return;
-        }
-        text.text = "";
         // Forward speed
         var target = this.transform.position;
         if (Input.GetKey(keysScript.AccelerationKey) && forwardVelocity < maxSpeed && !jumpPressed)
@@ -137,3 +127,13 @@ public class CarControlsScript_1 : MonoBehaviour
         jumpPressed = false;
     }
 }
+    private float countDown = 5f;
+        if (countDown > 1)
+        {
+            countDown -= Time.deltaTime;
+            int seconds = (int) countDown % 60;
+
+            text.text = seconds.ToString();
+            return;
+        }
+        text.text = "";
