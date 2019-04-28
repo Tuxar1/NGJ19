@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2775,7 +2775,7 @@ PrefabInstance:
     - target: {fileID: 2589077843064518306, guid: e58ea97a467d7ad4480a5595230d615e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2589077843064518310, guid: e58ea97a467d7ad4480a5595230d615e,
         type: 3}
@@ -2881,6 +2881,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589077842349786933, guid: e58ea97a467d7ad4480a5595230d615e,
+        type: 3}
+      propertyPath: m_Constraint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589077842349786933, guid: e58ea97a467d7ad4480a5595230d615e,
+        type: 3}
+      propertyPath: m_ConstraintCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e58ea97a467d7ad4480a5595230d615e, type: 3}
