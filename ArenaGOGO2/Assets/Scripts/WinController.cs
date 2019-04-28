@@ -70,12 +70,12 @@ public class WinController : MonoBehaviour
 
     private GameModes[] gameModes = {
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
-        new GameModes(WinConditions.TouchAllPlatforms, EnvironmentMods.Standard, ""),
-        new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
-		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.HeavyWinds, "???"),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity, "The moon"),
-        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.DeadlyIntervalPlatforms, "What do the colors signify?"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... and back again"),
+		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.DeadlyIntervalPlatforms, "What do the colors signify?"),
+		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.BombsUnderYouWithGravity, "Raining bombs!"),
+		// new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.HeavyWinds, "It sure is windy up here"),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
 		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity, "???"),
 	};

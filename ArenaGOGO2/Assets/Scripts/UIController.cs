@@ -102,7 +102,7 @@ public class UIController : MonoBehaviour
 		{
 			return "Cyan";
 		}
-		if (color == new Color(0.5f,1f,0))
+		if (color == new Color(0.5f,0,1f))
 		{
 			return "Purple";
 		}

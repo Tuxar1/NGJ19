@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public Animator Anim;
 
+    public AudioSource JumpSound;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -139,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
 			ResetJumpVars();
 			if (doJump)
 			{
+                JumpSound.Play();
 				lastJumpStart = time;
 			}
 		}
@@ -150,7 +153,8 @@ public class PlayerMovement : MonoBehaviour
 			ResetJumpVars();
 			if (doJump)
 			{
-				lastJumpStart = time;
+                JumpSound.Play();
+                lastJumpStart = time;
 			}
 		}
 		Rigidbody.velocity = newVelocity;
