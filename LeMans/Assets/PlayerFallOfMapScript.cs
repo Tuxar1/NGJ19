@@ -23,12 +23,12 @@ public class PlayerFallOfMapScript : MonoBehaviour
     {
         RaycastHit[] hits = Physics.RaycastAll(new Ray(this.transform.position, Vector3.down));
 
-        if (positionList.Count > 5)
+        if (positionList.Count > 20)
         {
             positionList.Dequeue();
         }
 
-        if (rotationList.Count > 5)
+        if (rotationList.Count > 20)
         {
             rotationList.Dequeue();
         }
