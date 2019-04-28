@@ -8,6 +8,7 @@ public class PlayerDeath : MonoBehaviour
     public ParticleSystem ps;
 
     public Action PlayerDeathActions;
+    public AudioSource[] playerDeathSounds;
 
 	private bool dead = false;
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PlayerDeath : MonoBehaviour
 		{
 			return;
 		}
+        playerDeathSounds[UnityEngine.Random.Range(0, playerDeathSounds.Length)].Play();
 		dead = true;
         ps.gameObject.transform.SetParent(null, true);
         ps.Play();
