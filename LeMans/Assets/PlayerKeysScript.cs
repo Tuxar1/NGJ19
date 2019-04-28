@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerKeysScript : MonoBehaviour
 {
     public PlayerID PlayerID = PlayerID.Player1;
     public List<GameObject> carControlScriptGameObjects;
+    public Boolean isFlaggedForReset;
     [HideInInspector] public KeyCode AccelerationKey;
     [HideInInspector] public KeyCode BrakeKey;
     [HideInInspector] public KeyCode LeftKey;
