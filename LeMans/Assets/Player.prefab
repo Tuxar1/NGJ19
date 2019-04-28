@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa2b2533c1ec174eb84d65bdcdb2f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Missile: {fileID: 0}
+  keysScript: {fileID: 0}
 --- !u!65 &400578208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -801,7 +803,7 @@ MonoBehaviour:
   PlayerID: 2
   carControlScriptGameObjects:
   - {fileID: 4654493777971572819}
-  - {fileID: 1142720299029515571}
+  - {fileID: 4654493777971572819}
   isFlaggedForReset: 0
   AccelerationKey: 0
   BrakeKey: 0
@@ -1235,11 +1237,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4654493777971572816}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-        type: 3}
-      propertyPath: m_Name
-      value: bil
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1295,6 +1292,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
+        type: 3}
+      propertyPath: m_Name
+      value: bil
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1321,11 +1323,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142720299029515569}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-        type: 3}
-      propertyPath: m_Name
-      value: bil
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1380,6 +1377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
+        type: 3}
+      propertyPath: m_Name
+      value: bil
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}

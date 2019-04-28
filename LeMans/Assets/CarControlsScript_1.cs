@@ -26,7 +26,9 @@ public class CarControlsScript_1 : MonoBehaviour
         
         positionList = new Queue();
         rotationList = new Queue();
-    }
+
+        Camera.main.rect = new Rect(Camera.main.rect.x, keysScript.CameraPos, Camera.main.rect.width, Camera.main.rect.height);
+    }   
     
     // Update is called once per frame
     void FixedUpdate()
