@@ -11,7 +11,7 @@ public class CarControlsScript_1 : MonoBehaviour
     private float accelerationForce = 0.05f;
     private float brakeForce = 0.05f;
     private float maxSpeed = 0.25f;
-    private bool jumpPressed;
+    public bool jumpPressed;
     private bool glidePressed;
 
     public GameObject CarModel;
@@ -35,6 +35,10 @@ public class CarControlsScript_1 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
 
         if (countDown > 1)
         {

@@ -58,6 +58,8 @@ public class MissileScript : MonoBehaviour
 
             // DESTROY MISSILE
             Destroy(transform.gameObject);
+
+            other.gameObject.GetComponent<CarControlsScript_1>().jumpPressed = true;
         }
     }
 

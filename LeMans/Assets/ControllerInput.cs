@@ -35,7 +35,7 @@ public class ControllerInput : MonoBehaviour
                 Axis = "Horizontal_2";
                 JumpKey = "Jump_2";
                 ShootKey = "Shoot_2";
-                carControlScriptGameObjects[1].SetActive(true);
+                carControlScriptGameObjects[0].SetActive(true);
                 CameraPos = 0.0f;
                 break;
         }

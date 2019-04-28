@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class RunningScoreScript : MonoBehaviour
 {
     public static int player1Score = 0;
     public static int player2Score = 0;
-    public static int winScore = 1;
+    public static int winScore = 5;
 
     public Text textPlayer1Score;
     public Text textPlayer2Score;
@@ -16,37 +17,53 @@ public class RunningScoreScript : MonoBehaviour
 
     public void Start()
     {
+        RefreshScores();
+    }
+
+    private void RefreshScores()
+    {
         // REFRESH SCORES
         textPlayer1Score.text = "" + player1Score;
         textPlayer2Score.text = "" + player2Score;
+    }
+    
+    public void givePlayer1Points()
+    {
+        player1Score++;
+        RefreshScores();
+        CheckWinner();
+    }
 
+    public void givePlayer2Points()
+    {
+        player2Score++;
+        RefreshScores();
+        CheckWinner();
+    }
+
+    private void CheckWinner()
+    {
         // SHOW WINNER
-        if (player1Score == winScore || 
+        if (player1Score == winScore ||
             player2Score == winScore)
         {
-           winTitleGameObject.SetActive(true);
+            winTitleGameObject.SetActive(true);
 
             if (player1Score == winScore) winTitle.text = "Top Won";
             if (player2Score == winScore) winTitle.text = "Bottom Won";
 
-            StartCoroutine( disableWinTitle() );
+            StartCoroutine(disableWinTitle());
         }
-    } 
-    
+        else
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
+
     IEnumerator disableWinTitle()
     {
-        yield return new WaitForSeconds (5.0f);
+        yield return new WaitForSeconds(5.0f);
         winTitleGameObject.SetActive(false);
         Application.LoadLevel(0);
-    }
-
-    public void givePlayer1Points()
-    {
-        player1Score++;
-    }
-
-     public void givePlayer2Points()
-    {
-        player2Score++;
     }
 }
