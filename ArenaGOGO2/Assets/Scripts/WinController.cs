@@ -66,6 +66,8 @@ public class WinController : MonoBehaviour
     public float startDeadlyPlatformsInterval = 1f;
     private Coroutine deadlyPlatformRoutine;
 
+    public AudioSource winSound;
+
     private GameModes[] gameModes = {
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
         new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
@@ -221,6 +223,7 @@ public class WinController : MonoBehaviour
 
     public void Win(WinConditions winCondition)
     {
+        winSound.Play();
 		GameController.GameHasStarted = false;
 		foreach (var player in playerRefs)
 		{
@@ -231,7 +234,8 @@ public class WinController : MonoBehaviour
 
 	public void Win(GameObject player, WinConditions winCondition)
     {
-		GameController.GameHasStarted = false;
+        winSound.Play();
+        GameController.GameHasStarted = false;
 		var playerID = player.GetComponent<PlayerInput>().PlayerID;
 		ScoreSystem.AwardPoints(playerID, winCondition);
 		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);
