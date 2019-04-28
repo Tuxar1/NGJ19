@@ -9,6 +9,7 @@ public class Lever : MonoBehaviour
     public Color standardColor;
     private int leverState;
     public SpriteRenderer spriteRenderer;
+	public Sprite[] sprites;
 
     // Start is called before the first frame update
     void Start()
@@ -35,16 +36,19 @@ public class Lever : MonoBehaviour
             case 0:
                 PurpleDoor.SetActive(true);
                 PinkDoor.SetActive(true);
-                spriteRenderer.color = standardColor;
+				spriteRenderer.sprite = sprites[0];
+				//spriteRenderer.color = standardColor;
                 break;
             case 1:
                 PinkDoor.SetActive(false);
-                spriteRenderer.color = PinkDoor.GetComponent<SpriteRenderer>().color;
+				spriteRenderer.sprite = sprites[1];
+				//spriteRenderer.color = PinkDoor.GetComponent<SpriteRenderer>().color;
                 PurpleDoor.SetActive(true);
                 break;
             case 2:
                 PurpleDoor.SetActive(false);
-                spriteRenderer.color = PurpleDoor.GetComponent<SpriteRenderer>().color;
+				spriteRenderer.sprite = sprites[2];
+                // spriteRenderer.color = PurpleDoor.GetComponent<SpriteRenderer>().color;
                 PinkDoor.SetActive(true);
                 break;
         }
