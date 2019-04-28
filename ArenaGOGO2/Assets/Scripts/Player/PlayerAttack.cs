@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
 	public PlayerInput input;
     public PlayerDeath playerDeath;
 	public Animator Anim;
+    public AudioSource whooshSound;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator HandleGetArmBack()
     {
+        whooshSound.Play();
         yield return new WaitForSeconds(SwingTime);
         EndSwing();
         yield return new WaitForSeconds(SwingCooldown);
