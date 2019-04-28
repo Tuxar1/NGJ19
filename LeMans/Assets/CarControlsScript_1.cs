@@ -16,6 +16,7 @@ public class CarControlsScript_1 : MonoBehaviour
 
     public GameObject CarModel;
     public PlayerKeysScript keysScript;
+    public ControllerInput controllerScript;
     private Rigidbody rigidBody;
     public GameObject playAuidoAndDestroy;
     public AudioClip sfxBoing;
@@ -29,8 +30,8 @@ public class CarControlsScript_1 : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         text = GameObject.Find("Text").GetComponent<Text>();
         Camera.main.rect = new Rect(Camera.main.rect.x, keysScript.CameraPos, Camera.main.rect.width, Camera.main.rect.height);
-    }   
-    
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -46,15 +47,15 @@ public class CarControlsScript_1 : MonoBehaviour
 
         // Forward speed
         var target = this.transform.position;
-        if (Input.GetKey(keysScript.AccelerationKey) && forwardVelocity < maxSpeed && !jumpPressed)
+        if ((Input.GetKey(keysScript.AccelerationKey) || Input.GetButton(controllerScript.AccelerationKey)) && forwardVelocity < maxSpeed && !jumpPressed)
         {
             forwardVelocity += accelerationForce;
         }
-        else if (Input.GetKey(keysScript.BrakeKey) && forwardVelocity > 0 && !jumpPressed)
+        else if ((Input.GetKey(keysScript.BrakeKey) || Input.GetButton(controllerScript.BrakeKey)) && forwardVelocity > 0 && !jumpPressed)
         {
             forwardVelocity -= brakeForce;
         }
-        else if (Input.GetKey(keysScript.BrakeKey) && forwardVelocity <= 0 && forwardVelocity > -(maxSpeed / 2) && !jumpPressed)
+        else if ((Input.GetKey(keysScript.BrakeKey) || Input.GetButton(controllerScript.BrakeKey)) && forwardVelocity <= 0 && forwardVelocity > -(maxSpeed / 2) && !jumpPressed)
         {
             forwardVelocity -= brakeForce;
         }
@@ -74,13 +75,13 @@ public class CarControlsScript_1 : MonoBehaviour
 
         target += this.transform.forward * forwardVelocity;
 
-        if (Input.GetKey(keysScript.RightKey) && !jumpPressed)
+        if ((Input.GetKey(keysScript.RightKey) || Input.GetAxis(controllerScript.Axis) > 0.3) && !jumpPressed)
         {
-            rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
+            rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity < -0.05 ? -rotationSpeed : rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
-        else if (Input.GetKey(keysScript.LeftKey) && !jumpPressed)
+        else if ((Input.GetKey(keysScript.LeftKey) || Input.GetAxis(controllerScript.Axis) < -0.3) && !jumpPressed)
         {
-            rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
+            rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + -(forwardVelocity < -0.05 ? -rotationSpeed : rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
 
         rigidBody.MovePosition(Vector3.MoveTowards(this.transform.position, target, 1f));
@@ -97,17 +98,17 @@ public class CarControlsScript_1 : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(keysScript.JumpKey) && !jumpPressed)
+        if ((Input.GetKeyDown(keysScript.JumpKey) || Input.GetButtonDown(controllerScript.JumpKey)) && !jumpPressed)
         {
             jumpPressed = true;
             rigidBody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
-                
+
             // PLAY SOUND
             GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
             gObbj.GetComponent<PlayAudioAndDestroy>().PlayClip(sfxBoing, true, 1);
         }
         //Glide
-        else if (Input.GetKey(keysScript.JumpKey) && jumpPressed)
+        else if ((Input.GetKey(keysScript.JumpKey) || Input.GetButtonDown(controllerScript.JumpKey)) && jumpPressed)
         {
             rigidBody.AddForce(Vector3.up * 3f, ForceMode.Acceleration);
         }
@@ -118,4 +119,3 @@ public class CarControlsScript_1 : MonoBehaviour
         jumpPressed = false;
     }
 }
-   
