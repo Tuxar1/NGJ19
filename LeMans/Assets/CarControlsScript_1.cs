@@ -75,11 +75,11 @@ public class CarControlsScript_1 : MonoBehaviour
 
         target += this.transform.forward * forwardVelocity;
 
-        if ((Input.GetKey(keysScript.RightKey) || Input.GetAxis(controllerScript.Axis) > 0.3) && !jumpPressed)
+        if ((Input.GetKey(keysScript.RightKey) || Input.GetAxis(controllerScript.Axis) > 0.35) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity < -0.05 ? -rotationSpeed : rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
-        else if ((Input.GetKey(keysScript.LeftKey) || Input.GetAxis(controllerScript.Axis) < -0.3) && !jumpPressed)
+        else if ((Input.GetKey(keysScript.LeftKey) || Input.GetAxis(controllerScript.Axis) < -0.35) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + -(forwardVelocity < -0.05 ? -rotationSpeed : rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
