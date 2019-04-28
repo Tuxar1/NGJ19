@@ -43,7 +43,8 @@ public class MenuScene : MonoBehaviour
 
 	private enum InputType {
 		Keyboard,
-		Joystick
+		Joystick,
+		JoyCon
 	}
 
 	// Start is called before the first frame update
@@ -67,11 +68,18 @@ public class MenuScene : MonoBehaviour
 		{
 			return;
 		}
+		var joysticks = Input.GetJoystickNames();
 		for (int i = 1; i < JoyStickInputSetup + 1; i++)
 		{
 			if (Input.GetButtonDown(BaseJoyName + i + JumpName))
 			{
-				AddRemovePlayer(i, InputType.Joystick);
+				var joystickType = InputType.Joystick;
+				var joystickName = joysticks[i - 1];
+				if (joystickName == "Wireless Gamepad")
+				{
+					joystickType = InputType.JoyCon;
+				}
+				AddRemovePlayer(i, joystickType);
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -176,6 +184,10 @@ public class MenuScene : MonoBehaviour
 			if (player.InputType == InputType.Joystick)
 			{
 				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + player.InputID + HorizontalName, BaseJoyName + player.InputID + JumpName, BaseJoyName + player.InputID + AttackName, player.SelectedColor);
+			}
+			else if (player.InputType == InputType.JoyCon)
+			{
+				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + player.InputID + HorizontalName + "A", BaseJoyName + player.InputID + JumpName, BaseJoyName + player.InputID + AttackName, player.SelectedColor);
 			}
 			else
 			{

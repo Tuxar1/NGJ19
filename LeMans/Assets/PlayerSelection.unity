@@ -180,9 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29edd27fa6b9ee43ae70f3a11a3226e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarModel: {fileID: 324090729}
-  PlayerID: 1
-  Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
 --- !u!4 &222745666
 Transform:
   m_ObjectHideFlags: 0
@@ -318,12 +315,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b8107c1ecd3054cae25ce5f5eb6110, type: 3}
---- !u!1 &280277105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-    type: 3}
-  m_PrefabInstance: {fileID: 280277104}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &280277106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
@@ -359,12 +350,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b8107c1ecd3054cae25ce5f5eb6110, type: 3}
---- !u!1 &324090729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-    type: 3}
-  m_PrefabInstance: {fileID: 324090728}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &324090730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
@@ -400,12 +385,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b8107c1ecd3054cae25ce5f5eb6110, type: 3}
---- !u!1 &504064566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-    type: 3}
-  m_PrefabInstance: {fileID: 504064565}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &504064567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
@@ -573,9 +552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29edd27fa6b9ee43ae70f3a11a3226e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarModel: {fileID: 504064566}
-  PlayerID: 1
-  Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
 --- !u!4 &879942252
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +579,8 @@ GameObject:
   - component: {fileID: 885208310}
   - component: {fileID: 885208309}
   - component: {fileID: 885208312}
+  - component: {fileID: 885208314}
+  - component: {fileID: 885208313}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -771,6 +749,83 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &885208313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885208308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 7df0dae7378261f4b8b869734e990192, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &885208314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885208308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 885208311}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1085429376
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +930,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394996034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1055,9 +1110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29edd27fa6b9ee43ae70f3a11a3226e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarModel: {fileID: 1843538330}
-  PlayerID: 1
-  Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
 --- !u!4 &1522829602
 Transform:
   m_ObjectHideFlags: 0
@@ -1232,12 +1284,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b8107c1ecd3054cae25ce5f5eb6110, type: 3}
---- !u!1 &1843538330 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-    type: 3}
-  m_PrefabInstance: {fileID: 1843538329}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1843538331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
@@ -1395,9 +1441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29edd27fa6b9ee43ae70f3a11a3226e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarModel: {fileID: 280277105}
-  PlayerID: 1
-  Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
 --- !u!4 &2144917352
 Transform:
   m_ObjectHideFlags: 0

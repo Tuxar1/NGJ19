@@ -6,6 +6,7 @@ public class MissileShooterScript : MonoBehaviour
 {
     public GameObject Missile;
     public PlayerKeysScript keysScript;
+    public ControllerInput controllerScript;
     private const int maxShots = 2;
     private int curShots = maxShots;
     private const int reloadCD_Reset = 50;
@@ -14,7 +15,7 @@ public class MissileShooterScript : MonoBehaviour
     public void Update() 
     {
         // Shoot
-        if (Input.GetKeyDown(keysScript.ShootKey))
+        if ((Input.GetKeyDown(keysScript.ShootKey) || Input.GetButtonDown(controllerScript.ShootKey)))
         {
             if (curShots > 0)
             {

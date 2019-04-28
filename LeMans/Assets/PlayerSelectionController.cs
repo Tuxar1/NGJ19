@@ -18,9 +18,7 @@ public class PlayerSelectionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var controllers = Gamepad.all;
-
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("Jump_1"))
         {
             Player1.transform.position = new Vector3(Player1.transform.position.x, 0, Player1.transform.position.z);
             Player1.SetActive(!Player1.activeSelf);
@@ -28,7 +26,7 @@ public class PlayerSelectionController : MonoBehaviour
             SoundManager.Instance.PlayJump();
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetButtonDown("Jump_2"))
         {
             Player2.transform.position = new Vector3(Player2.transform.position.x, 0, Player2.transform.position.z);
             Player2.SetActive(!Player2.activeSelf);

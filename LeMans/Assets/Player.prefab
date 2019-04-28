@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa2b2533c1ec174eb84d65bdcdb2f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Missile: {fileID: 0}
+  keysScript: {fileID: 0}
 --- !u!65 &400578208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -340,6 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
   keysScript: {fileID: 4654493778999566488}
+  controllerScript: {fileID: 0}
 --- !u!114 &1142720299029515533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 8383650390599069385, guid: 50fcff9d01d390648973937dbdc46020, type: 3}
   keysScript: {fileID: 4654493778999566488}
+  controllerScript: {fileID: 9049984189297564886}
 --- !u!114 &4654493777971572818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CarModel: {fileID: 3727283361159822722}
   keysScript: {fileID: 4654493778999566488}
+  controllerScript: {fileID: 9049984189297564886}
   playAuidoAndDestroy: {fileID: 4303033962255460800, guid: 4abaa1cfb7106ea439e1ac7a8af3af13,
     type: 3}
   sfxBoing: {fileID: 8300000, guid: 379bd52079494f749911352f2061ecce, type: 3}
@@ -762,6 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654493778999566494}
   - component: {fileID: 4654493778999566488}
+  - component: {fileID: 9049984189297564886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -801,7 +807,7 @@ MonoBehaviour:
   PlayerID: 2
   carControlScriptGameObjects:
   - {fileID: 4654493777971572819}
-  - {fileID: 1142720299029515571}
+  - {fileID: 4654493777971572819}
   isFlaggedForReset: 0
   AccelerationKey: 0
   BrakeKey: 0
@@ -810,6 +816,30 @@ MonoBehaviour:
   JumpKey: 0
   ShootKey: 0
   spawnPoint: {x: 0, y: 0, z: 0}
+  CameraPos: 0
+--- !u!114 &9049984189297564886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654493778999566489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e641f541bdd6e4d99c2e1be4efdf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerID: 2
+  carControlScriptGameObjects:
+  - {fileID: 4654493777971572819}
+  isFlaggedForReset: 0
+  AccelerationKey: 
+  BrakeKey: 
+  Axis: 
+  JumpKey: 
+  ShootKey: 
+  spawnPoint: {x: 0, y: 0, z: 0}
+  CameraPos: 0
 --- !u!1 &4926434578403177846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,15 +1145,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 08b665e9de077094f918658e081c9eef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 737ea58200cc8784f9c5ccc5c1fa05da, type: 3}
---- !u!1 &8354453192921327390 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 737ea58200cc8784f9c5ccc5c1fa05da,
-    type: 3}
-  m_PrefabInstance: {fileID: 58854641881546263}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5020285647582319885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 737ea58200cc8784f9c5ccc5c1fa05da,
+    type: 3}
+  m_PrefabInstance: {fileID: 58854641881546263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8354453192921327390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 737ea58200cc8784f9c5ccc5c1fa05da,
     type: 3}
   m_PrefabInstance: {fileID: 58854641881546263}
   m_PrefabAsset: {fileID: 0}
@@ -1235,11 +1265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4654493777971572816}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-        type: 3}
-      propertyPath: m_Name
-      value: bil
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1295,6 +1320,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
+        type: 3}
+      propertyPath: m_Name
+      value: bil
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1321,11 +1351,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142720299029515569}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
-        type: 3}
-      propertyPath: m_Name
-      value: bil
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1380,6 +1405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
+        type: 3}
+      propertyPath: m_Name
+      value: bil
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 98b8107c1ecd3054cae25ce5f5eb6110,
         type: 3}
