@@ -17,6 +17,8 @@ public class CarControlsScript_1 : MonoBehaviour
     private Queue rotationList;
     public PlayerKeysScript keysScript;
     private Rigidbody rigidBody;
+    public GameObject playAuidoAndDestroy;
+    public AudioClip sfxBoing;
 
     void Start()
     {
@@ -58,13 +60,6 @@ public class CarControlsScript_1 : MonoBehaviour
 
         target += this.transform.forward * forwardVelocity;
 
-        // Jump
-        if (Input.GetKeyDown(keysScript.JumpKey) && !jumpPressed)
-        {
-            jumpPressed = true;
-            rigidBody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
-        }
-
         if (Input.GetKey(keysScript.RightKey) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
@@ -92,6 +87,27 @@ public class CarControlsScript_1 : MonoBehaviour
         {
             positionList.Clear();
             rotationList.Clear();
+        }
+    }
+
+    public void Update()
+    {
+        if (keysScript.isFlaggedForReset)
+        {
+            keysScript.isFlaggedForReset = false;
+
+            rigidBody.velocity = Vector3.zero;
+        }
+
+        // Jump
+        if (Input.GetKeyDown(keysScript.JumpKey) && !jumpPressed)
+        {
+            jumpPressed = true;
+            rigidBody.AddForce(Vector3.up * 6f, ForceMode.VelocityChange);
+                
+            // PLAY SOUND
+            GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
+            gObbj.GetComponent<PlayAudioAndDestroy>().PlayClip(sfxBoing, true, 1);
         }
     }
 

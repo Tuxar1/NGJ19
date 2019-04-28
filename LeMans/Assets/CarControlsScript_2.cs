@@ -25,6 +25,8 @@ public class CarControlsScript_2 : MonoBehaviour
     private Vector3 carGrvity = new Vector3(0, -50, 0);
     private Rigidbody rigidBody;
     public PlayerKeysScript keysScript;
+    public GameObject playAuidoAndDestroy;
+    public AudioClip sfxBoing;
 
     void Start()
     {
@@ -34,6 +36,17 @@ public class CarControlsScript_2 : MonoBehaviour
     void Update()
     {
         checkControls();
+        checkFlaggedForReset();
+    }
+
+    private void checkFlaggedForReset()
+    {
+        if (keysScript.isFlaggedForReset)
+        {
+            keysScript.isFlaggedForReset = false;
+
+            rigidBody.velocity = Vector3.zero;
+        }
     }
 
     // finds the corresponding visual wheel
@@ -69,6 +82,10 @@ public class CarControlsScript_2 : MonoBehaviour
             {
                 rigidBody.AddForce(Vector3.up * 10000f, ForceMode.Impulse);
                 isGrounded = false;
+                
+                // PLAY SOUND
+                GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
+                gObbj.GetComponent<PlayAudioAndDestroy>().PlayClip(sfxBoing, true, 1);
             }
 
             // FORWARD & BACKWARDS
