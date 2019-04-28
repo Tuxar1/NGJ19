@@ -11,6 +11,7 @@ public class CarControlsScript_1 : MonoBehaviour
     private float brakeForce = 0.05f;
     private float maxSpeed = 0.25f;
     private bool jumpPressed;
+    private bool glidePressed;
 
     public GameObject CarModel;
     private Queue positionList;
@@ -60,13 +61,14 @@ public class CarControlsScript_1 : MonoBehaviour
             forwardVelocity = 0;
         }
 
+
         target += this.transform.forward * forwardVelocity;
 
         if (Input.GetKey(keysScript.RightKey) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + (forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
-        if (Input.GetKey(keysScript.LeftKey) && !jumpPressed)
+        else if (Input.GetKey(keysScript.LeftKey) && !jumpPressed)
         {
             rigidBody.MoveRotation(Quaternion.Euler(rigidBody.rotation.eulerAngles.x, rigidBody.rotation.eulerAngles.y + -(forwardVelocity > 0 ? rotationSpeed : -rotationSpeed), rigidBody.rotation.eulerAngles.x));
         }
@@ -110,6 +112,11 @@ public class CarControlsScript_1 : MonoBehaviour
             // PLAY SOUND
             GameObject gObbj = Instantiate(playAuidoAndDestroy) as GameObject;
             gObbj.GetComponent<PlayAudioAndDestroy>().PlayClip(sfxBoing, true, 1);
+        }
+        //Glide
+        else if (Input.GetKey(keysScript.JumpKey) && jumpPressed)
+        {
+            rigidBody.AddForce(Vector3.up * 3f, ForceMode.Acceleration);
         }
     }
 
