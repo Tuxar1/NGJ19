@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerKeysScript : MonoBehaviour
 {
     public PlayerID PlayerID = PlayerID.Player1;
     public List<GameObject> carControlScriptGameObjects;
+    public Boolean isFlaggedForReset;
     [HideInInspector] public KeyCode AccelerationKey;
     [HideInInspector] public KeyCode BrakeKey;
     [HideInInspector] public KeyCode LeftKey;
@@ -19,6 +21,7 @@ public class PlayerKeysScript : MonoBehaviour
     [HideInInspector] public KeyCode JumpKey;
     [HideInInspector] public KeyCode ShootKey;
     [HideInInspector] public Vector3 spawnPoint;
+    [HideInInspector] public float CameraPos;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class PlayerKeysScript : MonoBehaviour
                 JumpKey = KeyCode.Minus;
                 ShootKey = KeyCode.Period;
                 carControlScriptGameObjects[0].SetActive(true);
+                CameraPos = 0.5f;
                 break;
 
             case PlayerID.Player2:
@@ -42,6 +46,7 @@ public class PlayerKeysScript : MonoBehaviour
                 JumpKey = KeyCode.F;
                 ShootKey = KeyCode.G;
                 carControlScriptGameObjects[1].SetActive(true);
+                CameraPos = 0.0f;
                 break;
         }
     }

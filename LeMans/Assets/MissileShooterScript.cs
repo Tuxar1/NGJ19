@@ -6,18 +6,43 @@ public class MissileShooterScript : MonoBehaviour
 {
     public GameObject Missile;
     public PlayerKeysScript keysScript;
+    public ControllerInput controllerScript;
+    private const int maxShots = 2;
+    private int curShots = maxShots;
+    private const int reloadCD_Reset = 50;
+    private int reloadCD = reloadCD_Reset;
+
+    public void Update() 
+    {
+        // Shoot
+        if ((Input.GetKeyDown(keysScript.ShootKey) || Input.GetButtonDown(controllerScript.ShootKey)))
+        {
+            if (curShots > 0)
+            {
+                Shoot();
+            }
+        }
+    }
 
     public void FixedUpdate() 
     {
-        // Shoot
-        if (Input.GetKeyDown(keysScript.ShootKey))
+        if (curShots < maxShots)
         {
-            Shoot();
+            if (reloadCD > 0)
+            {
+                reloadCD--;
+            }
+            else
+            {
+                curShots++;
+                reloadCD = reloadCD_Reset;
+            }
         }
     }
 
     private void Shoot()
     {
-        Instantiate(Missile, this.transform.position + this.transform.forward * 3, this.transform.rotation);
+        curShots--;
+        Instantiate(Missile, this.transform.position + this.transform.forward * 3f, this.transform.rotation);
     }
 }

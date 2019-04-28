@@ -28,6 +28,7 @@ public enum EnvironmentMods
 	HighGravity,
 	LerpingGravity,
 	HeavyWinds,
+    DeadlyIntervalPlatforms,
 }
 
 public class WinController : MonoBehaviour
@@ -59,6 +60,12 @@ public class WinController : MonoBehaviour
     public Action<Color> WinActions;
     public PickupFlag Flag;
 
+    private bool isDeadlyPlatforms = false;
+    public int maxDeadlyPlatforms = 8;
+    public float deadlyPlatformInterval = 2f;
+    public float startDeadlyPlatformsInterval = 1f;
+    private Coroutine deadlyPlatformRoutine;
+
     private GameModes[] gameModes = {
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.Standard, "You cannot walk through doors"),
         new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.Standard, "... And back again"),
@@ -66,6 +73,7 @@ public class WinController : MonoBehaviour
         new GameModes(WinConditions.OneReachGoal, EnvironmentMods.BombsUnderYou, "Watch out!"),
 		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.HeavyWinds, "???"),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.LowGravity, "The moon"),
+        new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.DeadlyIntervalPlatforms, "What do the colors signify?"),
 		new GameModes(WinConditions.OneReachGoal, EnvironmentMods.HardMode, "Are you tough enough?"),
 		new GameModes(WinConditions.CaptureTheFlag, EnvironmentMods.LerpingGravity, "???"),
 	};
@@ -128,6 +136,10 @@ public class WinController : MonoBehaviour
 			case EnvironmentMods.HeavyWinds:
 				GravityController.mode = GravityController.GravityMode.HeavyWinds;
 				break;
+            case EnvironmentMods.DeadlyIntervalPlatforms:
+                isDeadlyPlatforms = true;
+                StartCoroutine(HandleChangingDeadlyPlatforms());
+                break;
 			default:
                 break;
         }
@@ -140,10 +152,7 @@ public class WinController : MonoBehaviour
 		BombSpawner.GravityBombs = false;
 		GravityController.mode = GravityController.GravityMode.Default;
 		Flag.ResetState();
-		foreach (var platform in platforms)
-		{
-			platform.Reset();
-		}
+        ResetPlatforms();
 	}
 
 	public void PickNextGameMode()
@@ -228,5 +237,39 @@ public class WinController : MonoBehaviour
 		var playerColor = PlayerSetup.GetColorFromPlayerID(playerID);
 		WinActions(playerColor);
 	}
+
+    private IEnumerator HandleChangingDeadlyPlatforms()
+    {
+        isDeadlyPlatforms = true;
+        var activePlatforms = platforms.Where(p => p.isActiveAndEnabled);
+        while(isDeadlyPlatforms)
+        {
+            if(activePlatforms.Count(p => p.IsInDeadlySequence) < 8)
+            {
+                var availablePlatforms = activePlatforms.Where(p => !p.IsInDeadlySequence).ToArray();
+                int notStartedCount = availablePlatforms.Count();
+                var randomNumber = UnityEngine.Random.Range(0, notStartedCount);
+                availablePlatforms[randomNumber].InitiateDeadlyPlatform(deadlyPlatformInterval);
+                var secondRandomNumber = UnityEngine.Random.Range(0, notStartedCount);
+                int iterator = 0, maxTries = 50;
+                while (secondRandomNumber == randomNumber && iterator < maxTries)
+                {
+                    secondRandomNumber = UnityEngine.Random.Range(0, notStartedCount);
+                    iterator++;
+                }
+                availablePlatforms[secondRandomNumber].InitiateDeadlyPlatform(deadlyPlatformInterval);
+            }
+            yield return new WaitForSeconds(startDeadlyPlatformsInterval);
+        }
+    }
+
+    public void ResetPlatforms()
+    {
+        isDeadlyPlatforms = false;
+        foreach(var platform in platforms)
+        {
+            platform.ResetPlatform();
+        }
+    }
 
 }

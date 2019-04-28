@@ -8,15 +8,18 @@ public class ArmToHitWith : MonoBehaviour
     public Vector2 SwingForce = new Vector2(750, 0);
     public float HitDisplacement = 0.2f;
     public Transform Parent;
+    public AudioSource hitSound;
 
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-			col.gameObject.GetComponent<PlayerMovement>().Hit(transform, SwingForce.x);
+            hitSound.Play();
+            col.gameObject.GetComponent<PlayerMovement>().Hit(transform, SwingForce.x);
         }
         else if (col.gameObject.tag == "Lever")
         {
+            hitSound.Play();
             col.gameObject.GetComponent<Lever>().ChangeLeverState();
         }
     }

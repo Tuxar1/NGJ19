@@ -13,25 +13,29 @@ public class MenuScene : MonoBehaviour
 		public Color SelectedColor;
 	}
 
-	public Color[] SelectableColors =
+	private Color[] SelectableColors =
 	{
 		Color.red,
 		Color.blue,
 		Color.green,
 		Color.yellow,
+		Color.magenta,
+		Color.cyan,
+		new Color(0.5f,1f,0),
+		new Color(1f,0.5f,0),
 	};
 
 	public MenuPlayer[] menuPlayers;
 	public GameObject StartText;
 
-	private const int MaxPlayers = 4;
-	private const int JoyStickInputSetup = 4;
+	private const int MaxPlayers = 8;
+	private const int JoyStickInputSetup = 8;
 	private const string BaseJoyName = "Joy";
 	private const string HorizontalName = "X";
 	private const string JumpName = "Jump";
 	private const string AttackName = "Attack";
 
-	private const int KeyboardInputCount = 2;
+	private const int KeyboardInputCount = 4;
 
 	private JoinedPlayer[] joinedPlayers;
 
@@ -39,7 +43,8 @@ public class MenuScene : MonoBehaviour
 
 	private enum InputType {
 		Keyboard,
-		Joystick
+		Joystick,
+		JoyCon
 	}
 
 	// Start is called before the first frame update
@@ -63,11 +68,18 @@ public class MenuScene : MonoBehaviour
 		{
 			return;
 		}
+		var joysticks = Input.GetJoystickNames();
 		for (int i = 1; i < JoyStickInputSetup + 1; i++)
 		{
 			if (Input.GetButtonDown(BaseJoyName + i + JumpName))
 			{
-				AddRemovePlayer(i, InputType.Joystick);
+				var joystickType = InputType.Joystick;
+				var joystickName = joysticks[i - 1];
+				if (joystickName == "Wireless Gamepad")
+				{
+					joystickType = InputType.JoyCon;
+				}
+				AddRemovePlayer(i, joystickType);
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -77,6 +89,14 @@ public class MenuScene : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			AddRemovePlayer(2, InputType.Keyboard);
+		}
+		if (Input.GetKeyDown(KeyCode.U))
+		{
+			AddRemovePlayer(3, InputType.Keyboard);
+		}
+		if (Input.GetKeyDown(KeyCode.Keypad8))
+		{
+			AddRemovePlayer(4, InputType.Keyboard);
 		}
 	}
 
@@ -165,14 +185,60 @@ public class MenuScene : MonoBehaviour
 			{
 				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + player.InputID + HorizontalName, BaseJoyName + player.InputID + JumpName, BaseJoyName + player.InputID + AttackName, player.SelectedColor);
 			}
+			else if (player.InputType == InputType.JoyCon)
+			{
+				PlayerSetup.SetUpJoystickPlayer(player.InputID, i, BaseJoyName + player.InputID + HorizontalName + "A", BaseJoyName + player.InputID + JumpName, BaseJoyName + player.InputID + AttackName, player.SelectedColor);
+			}
 			else
 			{
-				var jumpKey = player.InputID == 1 ? KeyCode.UpArrow : KeyCode.W;
-				var attackKey = player.InputID == 1 ? KeyCode.RightControl : KeyCode.LeftControl;
+				var jumpKey = GetJumpKeyCodeForKeyBoardInput(player.InputID);
+				var attackKey = GetAttackKeyCodeForKeyBoardInput(player.InputID);
 				PlayerSetup.SetUpKeyboardPlayer(player.InputID, i, "Key" + player.InputID + HorizontalName, jumpKey, attackKey, player.SelectedColor);
 			}
 		}
 		ScoreSystem.ResetScore();
 		SceneManager.LoadScene(1);
+	}
+
+	private KeyCode GetJumpKeyCodeForKeyBoardInput(int inputID)
+	{
+		if (inputID == 1)
+		{
+			return KeyCode.UpArrow;
+		}
+		else if (inputID == 2)
+		{
+			return KeyCode.W;
+		}
+		else if (inputID == 3)
+		{
+			return KeyCode.U;
+		}
+		else if (inputID == 4)
+		{
+			return KeyCode.Keypad8;
+		}
+		return KeyCode.Space;
+	}
+
+	private KeyCode GetAttackKeyCodeForKeyBoardInput(int inputID)
+	{
+		if (inputID == 1)
+		{
+			return KeyCode.RightControl;
+		}
+		else if (inputID == 2)
+		{
+			return KeyCode.LeftControl;
+		}
+		else if (inputID == 3)
+		{
+			return KeyCode.Space;
+		}
+		else if (inputID == 4)
+		{
+			return KeyCode.KeypadEnter;
+		}
+		return KeyCode.Space;
 	}
 }
