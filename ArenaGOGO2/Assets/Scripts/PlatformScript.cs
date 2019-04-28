@@ -37,11 +37,14 @@ public class PlatformScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            hasBeenTouched = true;
             if (isPlatformWin)
             {
-				spriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-                WinController.instance.CheckWinCondition(gameObject, col.gameObject);
+				if (!hasBeenTouched)
+				{
+					spriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+					WinController.instance.CheckWinCondition(gameObject, col.gameObject);
+				}
+				hasBeenTouched = true;
             }
 
             if (isDeadly)
@@ -65,6 +68,10 @@ public class PlatformScript : MonoBehaviour
         {
             isPlatformWin = true;
         }
+		else
+		{
+			isPlatformWin = false;
+		}
     }
 
     public void InitiateDeadlyPlatform(float deadlyPlatformInterval)
@@ -91,6 +98,7 @@ public class PlatformScript : MonoBehaviour
 
     public void ResetPlatform()
     {
+		isPlatformWin = false;
         isDeadly = false;
         spriteRenderer.color = initColor;
         hasBeenTouched = false;
